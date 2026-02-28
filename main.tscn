@@ -4,6 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://bri2u17w0dnx2" path="res://player/player.tscn" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://d0jy5j1qb2vpo" path="res://assets/light/player.png" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dxjqydfrsxa1b" path="res://inventory/inventory.tscn" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://cxnw27fqn25cv" path="res://assets/oxygen_meter/outline.png" id="5_7mycd"]
+[ext_resource type="Script" uid="uid://qylevvdlfiki" path="res://oxygen_controller.gd" id="5_272bh"]
+[ext_resource type="Texture2D" uid="uid://ca56j37f6xcj3" path="res://assets/oxygen_meter/fill.png" id="6_272bh"]
 
 [node name="main" type="Control" unique_id=1560385531]
 layout_mode = 3
@@ -35,3 +38,35 @@ texture_scale = 2.3
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=155804533]
 
 [node name="Inventory" parent="CanvasLayer" unique_id=279715357 instance=ExtResource("3_h2yge")]
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=897976646]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="OxygenController" type="Control" parent="CanvasLayer/MarginContainer" unique_id=1886704045]
+layout_mode = 2
+script = ExtResource("5_272bh")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/OxygenController" unique_id=392105460]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -33.0
+offset_top = -193.0
+offset_right = -25.0
+offset_bottom = -145.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(4, 4)
+value = 75.0
+fill_mode = 3
+texture_over = ExtResource("5_7mycd")
+texture_progress = ExtResource("6_272bh")
