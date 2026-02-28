@@ -11,7 +11,6 @@ extends Control
 
 
 func reload() -> void:
-	print(item)
 	if item:
 		item_sprite.texture = load(global.ITEMS[item[0]].sprite)
 		label.text = str(item[1])
