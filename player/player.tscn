@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://bri2u17w0dnx2"]
 
-[ext_resource type="Texture2D" uid="uid://saflminspcqc" path="res://assets/temp/player.png" id="1_oul6g"]
 [ext_resource type="Script" uid="uid://1rksodbxnfgn" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="SpriteFrames" uid="uid://q81htdxuj25j" path="res://player/player.tres" id="2_rkbax"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkbax"]
-radius = 7.0
-height = 22.0
+radius = 4.0
+height = 12.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rkbax"]
 light_mode = 1
@@ -16,7 +16,10 @@ script = ExtResource("1_rkbax")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1896882112]
 shape = SubResource("CapsuleShape2D_rkbax")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1415274318]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1279102403]
 material = SubResource("CanvasItemMaterial_rkbax")
-scale = Vector2(0.051643196, 0.051643196)
-texture = ExtResource("1_oul6g")
+position = Vector2(1, -0.5)
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("2_rkbax")
+animation = &"mine_h"
+frame_progress = 0.87671185
