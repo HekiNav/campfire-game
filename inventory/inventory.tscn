@@ -2,7 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ve4aqqlfpqjt" path="res://inventory/inventory.gd" id="1_sqil7"]
 
-[node name="inventory" type="CenterContainer" unique_id=279715357]
+[node name="inventory" type="Control" unique_id=186244060]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -10,5 +11,21 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sqil7")
 
-[node name="GridContainer" type="GridContainer" parent="." unique_id=48559426]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1464088064]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.2)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=447291164]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 324.0
+offset_right = 576.0
+offset_bottom = 324.0
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer" unique_id=48559426]
 layout_mode = 2
