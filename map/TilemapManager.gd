@@ -68,6 +68,7 @@ func mine_cell():
 	supportLevels.set(cell,0)
 	cell_update(cell)
 
+
 func get_clicked_tile_power():
 	var clicked_cell = foreground.local_to_map(foreground.get_local_mouse_position())
 	var data = foreground.get_cell_tile_data(clicked_cell)
