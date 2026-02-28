@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://nqek2ck1q4n8"]
+
+[ext_resource type="Script" uid="uid://d0py6me8c58of" path="res://menu/menu.gd" id="1_j0t7f"]
+
+[node name="menu" type="Control" unique_id=2041664354]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j0t7f")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=944029625]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.19835883, 0.4043104, 0.5921444, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1015573259]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
