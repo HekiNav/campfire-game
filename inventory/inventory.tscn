@@ -9,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_force_pass_scroll_events = false
 script = ExtResource("1_sqil7")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1464088064]
@@ -18,14 +19,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.2)
+color = Color(0, 0, 0, 0.39215687)
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=447291164]
-layout_mode = 0
-offset_left = 576.0
-offset_top = 324.0
-offset_right = 576.0
-offset_bottom = 324.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer" unique_id=48559426]
 layout_mode = 2
