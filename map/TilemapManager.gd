@@ -4,6 +4,7 @@ extends Node2D
 @onready var background = self.get_node("MapBackground")
 @onready var miningIndicator = self.get_node("MiningIndicator")
 @onready var aSprite = miningIndicator.get_node("ASprite")
+@export var player: Player
 
 
 var minedCell: Vector2i

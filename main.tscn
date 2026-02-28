@@ -12,7 +12,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TilemapManager" parent="." unique_id=873984971 instance=ExtResource("1_ig7tw")]
+[node name="TilemapManager" parent="." unique_id=873984971 node_paths=PackedStringArray("player") instance=ExtResource("1_ig7tw")]
+player = NodePath("../Player")
 
 [node name="Player" parent="." unique_id=797232758 node_paths=PackedStringArray("inventory") instance=ExtResource("2_0xm2m")]
 position = Vector2(58, 47)
