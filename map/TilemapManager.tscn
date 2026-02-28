@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://wjdr8tpqi7ks" path="res://map/TilemapManager.gd" id="1_6gwdf"]
 [ext_resource type="TileSet" uid="uid://dqg7r544ouu1p" path="res://map/MapTileset.tres" id="1_f6brs"]
 [ext_resource type="SpriteFrames" uid="uid://w31bwx7yo6xi" path="res://map/MiningIndicator.tres" id="3_pgltr"]
-[ext_resource type="Texture2D" uid="uid://cxipc0kbeetf7" path="res://icon.svg" id="4_ublgp"]
+[ext_resource type="Texture2D" uid="uid://2y5qbydk781" path="res://assets/mining/indicator.png" id="4_ublgp"]
 
 [node name="TilemapManager" type="Node2D" unique_id=873984971]
 script = ExtResource("1_6gwdf")
@@ -17,9 +17,9 @@ tile_map_data = PackedByteArray("AAAAAAAAAAACAAAAAAAAAAEAAAACAAAAAAAAAAIAAAACAAA
 tile_set = ExtResource("1_f6brs")
 
 [node name="MiningIndicator" type="AnimatedSprite2D" parent="." unique_id=337473833]
+position = Vector2(8, 8)
 sprite_frames = ExtResource("3_pgltr")
+animation = &"main"
 
 [node name="Sprite2D" type="Sprite2D" parent="MiningIndicator" unique_id=238652478]
-position = Vector2(8.000001, 8.000001)
-scale = Vector2(0.13971013, 0.13971013)
 texture = ExtResource("4_ublgp")
