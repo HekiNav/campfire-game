@@ -5,6 +5,9 @@ extends Node2D
 @onready var miningIndicator = self.get_node("MiningIndicator")
 @onready var aSprite = miningIndicator.get_node("ASprite")
 @export var player: Player
+@onready var collapse_effects: Node2D = $collapseEffects
+@onready var map_background: TileMapLayer = $MapBackground
+const WEAK_SUPPORT_PARTICLES = preload("res://collapse/weak_support_particles.tscn")
 
 var supportLevels: Dictionary
 
@@ -23,7 +26,6 @@ func _physics_process(delta: float) -> void:
 		miningIndicator.position=Vector2i(mx,my)
 		if Input.is_action_pressed("mine"):
 			var selectedCell = foreground.local_to_map(foreground.get_local_mouse_position())
-			print("ccc ",supportLevels.get(selectedCell,-1))
 			if(minedCell==selectedCell):
 				if(foreground.get_cell_tile_data(minedCell)==null):
 					aSprite.get_node("Target").frame=0
@@ -44,7 +46,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_pressed("place"):
 			var selectedCell = foreground.local_to_map(foreground.get_local_mouse_position())
 			if(foreground.get_cell_tile_data(selectedCell)==null):
-				foreground.set_cell(selectedCell,0,Vector2i(3, 1), 0)
+				foreground.set_cell(selectedCell,0,Vector2i(1, 1), 0)
 				supportLevels.set(selectedCell,5)
 				cell_update(selectedCell)
 
@@ -68,6 +70,8 @@ func get_clicked_tile_power():
 		return ""
 		
 func cell_update(cell: Vector2i):
+	for c in collapse_effects.get_children():
+		c.free()
 	var name = get_clicked_tile_power()
 	if name == "support":
 		supportLevels[cell] = 10
@@ -77,6 +81,7 @@ func cell_update(cell: Vector2i):
 			supportLevels[k] = 0
 		else:
 			supports.push_back(k)
+	
 	for s in supports:
 		const costX = 1
 		const costY = 5
@@ -86,7 +91,22 @@ func cell_update(cell: Vector2i):
 			var i = 1
 			while support > 0:
 				var tile = d*i+cell
-				if supportLevels.has(tile): supportLevels.set(tile, support)
+				print(tile, support)
+				if supportLevels.has(tile): 
+					supportLevels.set(tile, support)
 				i += 1
 				support -= cost
-	print(supportLevels)
+	var weaklySupported = []
+	var notSupported = []
+	for k in supportLevels.keys():
+		print(supportLevels[k])
+		if supportLevels[k] == 0:
+			notSupported.push_back(k)
+		elif supportLevels[k] < 5:
+			weaklySupported.push_back(k)
+	print(weaklySupported, notSupported)
+	for k in weaklySupported:
+		var newParticles: GPUParticles2D = WEAK_SUPPORT_PARTICLES.instantiate()
+		
+		newParticles.position = k * 16
+		collapse_effects.add_child(newParticles)

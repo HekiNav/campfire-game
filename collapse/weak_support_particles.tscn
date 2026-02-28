@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://c2xnt1wh0f70c"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7exc7"]
+lifetime_randomness = 0.5
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(8, 1, 1)
+gravity = Vector3(0, 60, 0)
+turbulence_enabled = true
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+sub_emitter_mode = 3
+sub_emitter_amount_at_collision = 2
+
+[node name="weak_support_particles" type="GPUParticles2D" unique_id=364296818]
+speed_scale = 0.4
+process_material = SubResource("ParticleProcessMaterial_7exc7")
