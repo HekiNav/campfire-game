@@ -14,8 +14,9 @@ grow_vertical = 2
 
 [node name="TilemapManager" parent="." unique_id=873984971 instance=ExtResource("1_ig7tw")]
 
-[node name="Player" parent="." unique_id=797232758 instance=ExtResource("2_0xm2m")]
+[node name="Player" parent="." unique_id=797232758 node_paths=PackedStringArray("inventory") instance=ExtResource("2_0xm2m")]
 position = Vector2(58, 47)
+inventory = NodePath("../CanvasLayer/Inventory")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=463418566]
 zoom = Vector2(5, 5)

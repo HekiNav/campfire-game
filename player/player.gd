@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var SPEED = 150.0
 @export var JUMP_VELOCITY = -300.0
-
+@export var inventory: Inventory
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.

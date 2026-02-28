@@ -1,3 +1,4 @@
+class_name Inventory
 extends Control
 
 @export var WIDTH = 8
@@ -5,7 +6,7 @@ extends Control
 var inventory_tile = preload("res://inventory/inventory_tile.tscn")
 @onready var grid_container: GridContainer = $CenterContainer/GridContainer
 
-var inventory_data = []
+var inventory_data = [["test",100], null, ["test", 9], null, null, null, ["test",67]]
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
@@ -14,17 +15,19 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print(grid_container)
 	grid_container.columns = WIDTH
 	for x in range(SIZE):
-		inventory_data.push_front(null)
+		if inventory_data.size() <= x: 
+			inventory_data.push_back(null)
 		grid_container.add_child(inventory_tile.instantiate())
+	print(inventory_data)
 	update_inventory_ui()
-	
+
 func update_inventory_ui():
 	for i in range(inventory_data.size()):
-		print(grid_container.get_child(i))
+		print(i, inventory_data[i])
 		(grid_container.get_child(i) as InventoryTile).item = inventory_data[i]
+		(grid_container.get_child(i) as InventoryTile).reload()
 		
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
