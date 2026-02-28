@@ -2,11 +2,15 @@ class_name Inventory
 extends Control
 
 @export var WIDTH = 8
+@export var MAX_STACK_SIZE = 10
 @onready var SIZE = global.inventory_size
 var inventory_tile = preload("res://inventory/inventory_tile.tscn")
 @onready var grid_container: GridContainer = $CenterContainer/GridContainer
 
-var inventory_data = [["test",100], null, ["test", 9], null, null, null, ["test",67]]
+func add_items(item: String, count = 1):
+	pass
+
+var inventory_data = [["test",10], null, ["test", 9], null, null, null, ["test",6]]
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
