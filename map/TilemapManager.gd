@@ -77,7 +77,9 @@ func cell_update(cell: Vector2i):
 		supportLevels[cell] = 10
 	var supports = []
 	for k in supportLevels.keys():
+		print(supportLevels[k])
 		if supportLevels[k] != 10:
+			print(k)
 			supportLevels[k] = 0
 		else:
 			supports.push_back(k)
@@ -90,21 +92,20 @@ func cell_update(cell: Vector2i):
 			var support = 10 - cost
 			var i = 1
 			while support > 0:
-				var tile = d*i+cell
-				print(tile, support)
+				var tile = d*i+s
 				if supportLevels.has(tile): 
-					supportLevels.set(tile, support)
+					if supportLevels[tile] < support: supportLevels.set(tile, support)
 				i += 1
 				support -= cost
 	var weaklySupported = []
 	var notSupported = []
 	for k in supportLevels.keys():
-		print(supportLevels[k])
+		print("erfi9oerfi ",supportLevels[k])
 		if supportLevels[k] == 0:
 			notSupported.push_back(k)
 		elif supportLevels[k] < 5:
 			weaklySupported.push_back(k)
-	print(weaklySupported, notSupported)
+	print(weaklySupported, notSupported, supportLevels)
 	for k in weaklySupported:
 		var newParticles: GPUParticles2D = WEAK_SUPPORT_PARTICLES.instantiate()
 		

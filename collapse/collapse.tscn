@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bbd6bnq3fxla3"]
+
+[sub_resource type="Animation" id="Animation_5mlte"]
+resource_name = "block_fall"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n7l0d"]
+_data = {
+&"block_fall": SubResource("Animation_5mlte")
+}
+
+[node name="Node2D" type="AnimationPlayer" unique_id=658514324]
+libraries/ = SubResource("AnimationLibrary_n7l0d")
+autoplay = &"block_fall"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=242332137]
