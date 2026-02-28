@@ -62,8 +62,6 @@ func mine_cell():
 	var name = get_clicked_tile_power()
 	foreground.set_cell(cell,-1,Vector2i(0, 0), 0)
 	background.set_cell(cell,0,Vector2i(0, 1), 0)
-	
-	player.inventory.add_items(name,1)
 
 
 func get_clicked_tile_power():

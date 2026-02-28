@@ -15,11 +15,14 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor() and not global.is_menu_open:
 		velocity.y = JUMP_VELOCITY
-
 	if (velocity.x<0):
 		animated_sprite_2d.flip_h = true
-	if (velocity.x>0):
+		animated_sprite_2d.play("walk")
+	elif  (velocity.x>0):
 		animated_sprite_2d.flip_h = false
+		animated_sprite_2d.play("walk")
+	else:
+		animated_sprite_2d.play("idle")
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
