@@ -22,4 +22,11 @@ func _process(delta: float) -> void:
 	else:
 		self.get_node("Warning").visible=false
 		
+	if (level==0):
+		var player = self.get_parent().get_parent().get_parent().get_node("Player")
+		player.position=Vector2i(0,10)
+		player.inventory.clear()
+		player.inventory.update_inventory_ui()
+		print(player.inventory)
+		level=100
 		

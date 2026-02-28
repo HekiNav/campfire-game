@@ -2,6 +2,8 @@ extends Node2D
 
 @onready var foreground = self.get_node("MapForeground")
 @onready var background = self.get_node("MapBackground")
+@onready var realground = self.get_node("VisibleMapForeground")
+
 @onready var miningIndicator = self.get_node("MiningIndicator")
 @onready var aSprite = miningIndicator.get_node("ASprite")
 @export var player: Player
@@ -55,7 +57,19 @@ func mine_cell():
 	var cell = foreground.local_to_map(foreground.get_local_mouse_position())
 	var name = get_clicked_tile_power()
 	foreground.set_cell(cell,-1,Vector2i(0, 0), 0)
+	realground.set_cell(cell,-1,Vector2i(0, 0), 0)
 	background.set_cell(cell,0,Vector2i(0, 1), 0)
+	
+	realground.set_cell(Vector2i(cell.x+1,cell.y),-1,Vector2i(0, 0), 0)
+	realground.set_cell(Vector2i(cell.x-1,cell.y),-1,Vector2i(0, 0), 0)
+	realground.set_cell(Vector2i(cell.x,cell.y+1),-1,Vector2i(0, 0), 0)
+	realground.set_cell(Vector2i(cell.x,cell.y-1),-1,Vector2i(0, 0), 0)
+
+	realground.set_cell(Vector2i(cell.x+1,cell.y+1),-1,Vector2i(0, 0), 0)
+	realground.set_cell(Vector2i(cell.x+1,cell.y-1),-1,Vector2i(0, 0), 0)
+	realground.set_cell(Vector2i(cell.x-1,cell.y+1),-1,Vector2i(0, 0), 0)
+	realground.set_cell(Vector2i(cell.x-1,cell.y-1),-1,Vector2i(0, 0), 0)
+
 	miningProgress=0
 	player.inventory.add_items(name,1)
 	supportLevels.set(cell,0)
