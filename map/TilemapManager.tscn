@@ -4,9 +4,13 @@
 [ext_resource type="TileSet" uid="uid://dqg7r544ouu1p" path="res://map/MapTileset.tres" id="1_f6brs"]
 [ext_resource type="SpriteFrames" uid="uid://ckmfhkxfqcss0" path="res://map/MiningIndicator.tres" id="3_pgltr"]
 [ext_resource type="SpriteFrames" uid="uid://btaso4x86x42f" path="res://map/Indicator.tres" id="4_ublgp"]
+[ext_resource type="Script" uid="uid://sgghwm6gqbfb" path="res://map/bunkers.gd" id="5_qs6ix"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ublgp"]
 light_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ttjyd"]
+size = Vector2(127, 33)
 
 [node name="TilemapManager" type="Node2D" unique_id=873984971]
 script = ExtResource("1_6gwdf")
@@ -29,5 +33,17 @@ animation = &"main"
 
 [node name="Target" type="AnimatedSprite2D" parent="MiningIndicator/ASprite" unique_id=1914246691]
 sprite_frames = ExtResource("4_ublgp")
+
+[node name="Bunkers" type="Node2D" parent="." unique_id=1313001394]
+script = ExtResource("5_qs6ix")
+
+[node name="SpawnBunker" type="Area2D" parent="Bunkers" unique_id=1358746758]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bunkers/SpawnBunker" unique_id=1179733428]
+position = Vector2(32.5, 15.5)
+shape = SubResource("RectangleShape2D_ttjyd")
+
+[connection signal="body_entered" from="Bunkers/SpawnBunker" to="Bunkers" method="_on_spawn_bunker_body_entered"]
+[connection signal="body_exited" from="Bunkers/SpawnBunker" to="Bunkers" method="_on_spawn_bunker_body_exited"]
 
 [node name="collapseEffects" type="Node2D" parent="." unique_id=563817118]
