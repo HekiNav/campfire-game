@@ -4,7 +4,7 @@ var inventory_size = 24
 
 var is_menu_open = false
 
-var ogygen_depletion_speed = 5
+var ogygen_depletion_speed = 2
 
 const ITEMS = {
 	"test": {
