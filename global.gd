@@ -12,5 +12,8 @@ const ITEMS = {
 	},
 	"rock": {
 		"sprite": "res://assets/temp/item.png"
+	},
+	"support": {
+		"sprite": "res://assets/temp/item.png"
 	}
 }

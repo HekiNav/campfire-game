@@ -13,17 +13,7 @@ var miningProgress: float
 
 
 func _ready() -> void:
-	var coords: Vector2i
-	coords.x=0
-	coords.y=3
-	foreground.set_cell(coords, 0, Vector2i(2, 0), 0)
-	coords.y=2
-	foreground.set_cell(coords, 0, Vector2i(1, 0), 0)
-	coords.y=1
-	foreground.set_cell(coords, 0, Vector2i(0, 0), 0)
-	coords.y=0
-	foreground.set_cell(coords, 0, Vector2i(0, 1), 0)
-	print(foreground.get_cell_atlas_coords(coords))
+	pass
 
 	
 func _physics_process(delta: float) -> void:
@@ -75,9 +65,28 @@ func get_clicked_tile_power():
 	if data:
 		return data.get_custom_data("name")
 	else:
-		return 0
+		return ""
 		
 func cell_update(cell: Vector2i):
-	pass
-	
-	
+	var name = get_clicked_tile_power()
+	if name == "support":
+		supportLevels[cell] = 10
+	var supports = []
+	for k in supportLevels.keys():
+		if supportLevels[k] != 10:
+			supportLevels[k] = 0
+		else:
+			supports.push_back(k)
+	for s in supports:
+		const costX = 1
+		const costY = 5
+		for d in [Vector2i.LEFT, Vector2i.RIGHT, Vector2i.UP]:
+			var cost = costX if d.y ==  0 else costY
+			var support = 10 - cost
+			var i = 1
+			while support > 0:
+				var tile = d*i+cell
+				if supportLevels.has(tile): supportLevels.set(tile, support)
+				i += 1
+				support -= cost
+	print(supportLevels)

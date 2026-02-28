@@ -51,7 +51,7 @@ texture = ExtResource("1_3iyvd")
 2:1/0/custom_data_0 = "test"
 3:1/0 = 0
 3:1/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_3ltt6")
-3:1/0/custom_data_0 = "light"
+3:1/0/custom_data_0 = "support"
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4715e"]
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
