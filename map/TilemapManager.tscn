@@ -22,4 +22,5 @@ sprite_frames = ExtResource("3_pgltr")
 animation = &"main"
 
 [node name="Sprite2D" type="Sprite2D" parent="MiningIndicator" unique_id=238652478]
+position = Vector2(8, 8)
 texture = ExtResource("4_ublgp")
