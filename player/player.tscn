@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://1rksodbxnfgn" path="res://player/player.gd" id="1_rkbax"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rkbax"]
+radius = 7.0
+height = 22.0
 
 [node name="Player" type="CharacterBody2D" unique_id=797232758]
 script = ExtResource("1_rkbax")
@@ -12,5 +14,5 @@ script = ExtResource("1_rkbax")
 shape = SubResource("CapsuleShape2D_rkbax")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1415274318]
-scale = Vector2(0.07042253, 0.070422545)
+scale = Vector2(0.051643196, 0.051643196)
 texture = ExtResource("1_oul6g")
