@@ -7,6 +7,9 @@
 radius = 7.0
 height = 22.0
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rkbax"]
+light_mode = 1
+
 [node name="Player" type="CharacterBody2D" unique_id=797232758]
 script = ExtResource("1_rkbax")
 
@@ -14,5 +17,6 @@ script = ExtResource("1_rkbax")
 shape = SubResource("CapsuleShape2D_rkbax")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1415274318]
+material = SubResource("CanvasItemMaterial_rkbax")
 scale = Vector2(0.051643196, 0.051643196)
 texture = ExtResource("1_oul6g")
