@@ -7,6 +7,10 @@ var inventory_tile = preload("res://inventory/inventory_tile.tscn")
 
 var inventory_data = []
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("inventory"):
+		visible = !visible
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	print(grid_container)
