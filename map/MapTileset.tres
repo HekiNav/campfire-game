@@ -6,9 +6,12 @@
 texture = ExtResource("1_3iyvd")
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:0/0/custom_data_0 = "red"
 1:0/0 = 0
+1:0/0/custom_data_0 = "orange"
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0/custom_data_0 = "blue"
 3:0/0 = 0
 4:0/0 = 0
 5:0/0 = 0
@@ -16,6 +19,7 @@ texture = ExtResource("1_3iyvd")
 7:0/0 = 0
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0/custom_data_0 = "green"
 1:1/0 = 0
 2:1/0 = 0
 3:1/0 = 0
@@ -74,4 +78,6 @@ texture = ExtResource("1_3iyvd")
 
 [resource]
 physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "name"
+custom_data_layer_0/type = 4
 sources/0 = SubResource("TileSetAtlasSource_kfbt3")
