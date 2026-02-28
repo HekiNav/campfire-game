@@ -6,6 +6,9 @@ extends Control
 @onready var SIZE = global.inventory_size
 var inventory_tile = preload("res://inventory/inventory_tile.tscn")
 @onready var grid_container: GridContainer = $CenterContainer/GridContainer
+@onready var moving_tile: InventoryTile = $movingTile
+
+var picked_up_item = null
 
 func add_items(item: String, count = 1):
 	var inclomplete_stack = inventory_data.find_custom(func (e):  return e and e[0] == item && e[1] < MAX_STACK_SIZE)
@@ -40,7 +43,10 @@ func _ready() -> void:
 	for x in range(SIZE):
 		if inventory_data.size() <= x: 
 			inventory_data.push_back(null)
-		grid_container.add_child(inventory_tile.instantiate())
+		var new_tile = inventory_tile.instantiate()
+		new_tile.background = true
+		grid_container.add_child(new_tile)
+		
 	update_inventory_ui()
 	add_items("test",2)
 	add_items("test",9)
@@ -64,5 +70,32 @@ func _input(event: InputEvent) -> void:
 		global.is_menu_open = visible
 
 func _on_grid_container_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseMotion:
-		print(event.position)
+	const TILE_WIDTH = 12*4
+	if event is InputEventMouse:
+		var x = floor(event.position.x / TILE_WIDTH)
+		var y = floor(event.position.y / TILE_WIDTH)
+		var i = y*WIDTH+x
+		if not grid_container.get_child(i): return
+		for c in grid_container.get_children():
+			c.set_hovered(false)
+		grid_container.get_child(i).set_hovered(true)
+		
+		if event.button_mask == 1 and event.is_pressed() and inventory_data[i] and not picked_up_item:
+			picked_up_item = inventory_data[i]
+			inventory_data[i] = null
+			update_inventory_ui()
+			print("pickup")
+		elif event.button_mask == 0 and event.is_released() and picked_up_item:
+			inventory_data[i] = picked_up_item
+			picked_up_item = null
+			update_inventory_ui()
+			
+		if picked_up_item:
+			moving_tile.visible = true
+			moving_tile.item = picked_up_item
+			moving_tile.global_position = event.global_position + Vector2(TILE_WIDTH* -0.5,TILE_WIDTH* -0.5)
+			moving_tile.reload()
+			print(moving_tile.global_position)
+		else:
+			moving_tile.visible = false
+		
