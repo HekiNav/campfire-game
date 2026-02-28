@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://d0jy5j1qb2vpo" path="res://assets/light/player.png" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dxjqydfrsxa1b" path="res://inventory/inventory.tscn" id="3_h2yge"]
 [ext_resource type="Texture2D" uid="uid://cxnw27fqn25cv" path="res://assets/oxygen_meter/outline.png" id="5_7mycd"]
-[ext_resource type="Script" path="res://oxygen_controller.gd" id="5_272bh"]
+[ext_resource type="Script" uid="uid://qylevvdlfiki" path="res://oxygen_controller.gd" id="5_272bh"]
 [ext_resource type="Texture2D" uid="uid://ca56j37f6xcj3" path="res://assets/oxygen_meter/fill.png" id="6_272bh"]
 
 [node name="main" type="Control" unique_id=1560385531]

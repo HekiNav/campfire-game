@@ -2,8 +2,8 @@ class_name Player
 extends CharacterBody2D
 
 
-@export var SPEED = 150.0
-@export var JUMP_VELOCITY = -300.0
+@export var SPEED = 100.0
+@export var JUMP_VELOCITY = -150.0
 @export var inventory: Inventory
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
