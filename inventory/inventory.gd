@@ -62,5 +62,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("inventory"):
 		visible = !visible
 		global.is_menu_open = visible
+
+func _on_grid_container_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		print(event.position)

@@ -34,3 +34,5 @@ grow_vertical = 2
 layout_mode = 2
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="gui_input" from="CenterContainer" to="." method="_on_center_container_gui_input"]
+[connection signal="gui_input" from="CenterContainer/GridContainer" to="." method="_on_grid_container_gui_input"]
