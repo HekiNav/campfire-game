@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://c2xnt1wh0f70c"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7exc7"]
+lifetime_randomness = 0.5
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(8, 1, 1)
+gravity = Vector3(0, 40, 0)
+color = Color(0.4354466, 0.22797772, 0.20982537, 1)
+hue_variation_min = -0.050000023
+hue_variation_max = 0.049999975
+turbulence_enabled = true
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_boqa8"]
+polygon = PackedVector2Array(-10, 16, -10, 16.5, 10, 16.5, 10, 16)
+
+[node name="weak_support_particles" type="GPUParticles2D" unique_id=364296818]
+speed_scale = 0.4
+process_material = SubResource("ParticleProcessMaterial_7exc7")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="." unique_id=851509640]
+occluder = SubResource("OccluderPolygon2D_boqa8")
