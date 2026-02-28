@@ -2,20 +2,25 @@ extends Node2D
 
 @onready var foreground = self.get_node("MapForeground")
 @onready var background = self.get_node("MapBackground")
+@onready var realground = self.get_node("VisibleMapForeground")
+
 @onready var miningIndicator = self.get_node("MiningIndicator")
 @onready var aSprite = miningIndicator.get_node("ASprite")
 @export var player: Player
 @onready var collapse_effects: Node2D = $collapseEffects
 @onready var map_background: TileMapLayer = $MapBackground
 const WEAK_SUPPORT_PARTICLES = preload("res://collapse/weak_support_particles.tscn")
+const COLLAPSE = preload("res://collapse/collapse.tscn")
 
 var supportLevels: Dictionary
+
 
 var minedCell: Vector2i
 var miningProgress: float
 
 
 func _ready() -> void:
+	supportLevels[Vector2i(5,1)] = 10
 	pass
 
 	
@@ -54,7 +59,19 @@ func mine_cell():
 	var cell = foreground.local_to_map(foreground.get_local_mouse_position())
 	var name = get_clicked_tile_power()
 	foreground.set_cell(cell,-1,Vector2i(0, 0), 0)
+	realground.set_cell(cell,-1,Vector2i(0, 0), 0)
 	background.set_cell(cell,0,Vector2i(0, 1), 0)
+	
+	realground.set_cell(Vector2i(cell.x+1,cell.y),-1,Vector2i(0, 0), 0)
+	realground.set_cell(Vector2i(cell.x-1,cell.y),-1,Vector2i(0, 0), 0)
+	realground.set_cell(Vector2i(cell.x,cell.y+1),-1,Vector2i(0, 0), 0)
+	realground.set_cell(Vector2i(cell.x,cell.y-1),-1,Vector2i(0, 0), 0)
+
+	realground.set_cell(Vector2i(cell.x+1,cell.y+1),-1,Vector2i(0, 0), 0)
+	realground.set_cell(Vector2i(cell.x+1,cell.y-1),-1,Vector2i(0, 0), 0)
+	realground.set_cell(Vector2i(cell.x-1,cell.y+1),-1,Vector2i(0, 0), 0)
+	realground.set_cell(Vector2i(cell.x-1,cell.y-1),-1,Vector2i(0, 0), 0)
+
 	miningProgress=0
 	player.inventory.add_items(name,1)
 	supportLevels.set(cell,0)
@@ -69,9 +86,9 @@ func get_clicked_tile_power():
 	else:
 		return ""
 		
-func cell_update(cell: Vector2i):
+func cell_update(cell: Vector2i, collapse = true):
 	for c in collapse_effects.get_children():
-		c.free()
+		c.queue_free()
 	var name = get_clicked_tile_power()
 	if name == "support":
 		supportLevels[cell] = 10
@@ -106,8 +123,27 @@ func cell_update(cell: Vector2i):
 		elif supportLevels[k] < 5:
 			weaklySupported.push_back(k)
 	print(weaklySupported, notSupported, supportLevels)
+	if not collapse:
+		return
 	for k in weaklySupported:
 		var newParticles: GPUParticles2D = WEAK_SUPPORT_PARTICLES.instantiate()
 		
 		newParticles.position = k * 16
 		collapse_effects.add_child(newParticles)
+	for k in notSupported:
+		if weaklySupported.has(k+Vector2i.UP) && not notSupported.has(k+Vector2i.UP) && supportLevels[k+Vector2i.UP] < 5: notSupported.push_back(k+Vector2i.UP)
+		if weaklySupported.has(k+Vector2i.DOWN) && not notSupported.has(k+Vector2i.DOWN) && supportLevels[k+Vector2i.DOWN] < 5: notSupported.push_back(k+Vector2i.DOWN)
+		if weaklySupported.has(k+Vector2i.LEFT) && not notSupported.has(k+Vector2i.LEFT) && supportLevels[k+Vector2i.LEFT] < 5: notSupported.push_back(k+Vector2i.LEFT)
+		if weaklySupported.has(k+Vector2i.RIGHT) && not notSupported.has(k+Vector2i.RIGHT) && supportLevels[k+Vector2i.RIGHT] < 5: notSupported.push_back(k+Vector2i.RIGHT)
+		var newEffect: Node2D = COLLAPSE.instantiate()
+		
+		newEffect.position = (Vector2(k) + Vector2(0.5, -0.5)) * 16
+		var i = 0
+		newEffect.done.connect(func():
+			foreground.set_cell(k,0,Vector2i(0, 0), 0)
+			newEffect.queue_free()
+			await get_tree().process_frame
+			i += 1
+			cell_update(k, false)
+		)
+		collapse_effects.add_child(newEffect)
