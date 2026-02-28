@@ -14,11 +14,13 @@ const COLLAPSE = preload("res://collapse/collapse.tscn")
 
 var supportLevels: Dictionary
 
+
 var minedCell: Vector2i
 var miningProgress: float
 
 
 func _ready() -> void:
+	supportLevels[Vector2i(5,1)] = 10
 	pass
 
 	
