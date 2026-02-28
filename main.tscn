@@ -2,8 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://co1gg0q726kh7" path="res://map/TilemapManager.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bri2u17w0dnx2" path="res://player/player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dxjqydfrsxa1b" path="res://inventory/inventory.tscn" id="3_h2yge"]
 
-[node name="main" type="Node2D" unique_id=1113208028]
+[node name="main" type="Control" unique_id=1560385531]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="TilemapManager" parent="." unique_id=873984971 instance=ExtResource("1_ig7tw")]
 
@@ -12,3 +19,7 @@ position = Vector2(58, 47)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=463418566]
 zoom = Vector2(5, 5)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=155804533]
+
+[node name="Inventory" parent="CanvasLayer" unique_id=279715357 instance=ExtResource("3_h2yge")]

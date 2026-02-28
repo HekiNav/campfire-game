@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://ti27rqjytu51"]
+
+[ext_resource type="Texture2D" uid="uid://bk3yyn7y6r82i" path="res://assets/inventory/inventoryTile.png" id="1_18d4s"]
+[ext_resource type="Script" uid="uid://brv33oeamuht" path="res://inventory/inventory_tile.gd" id="1_dcwhn"]
+
+[node name="Control" type="Control" unique_id=2005772785]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 3
+offset_right = 36.0
+offset_bottom = 36.0
+script = ExtResource("1_dcwhn")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1115670724]
+scale = Vector2(3, 3)
+texture = ExtResource("1_18d4s")

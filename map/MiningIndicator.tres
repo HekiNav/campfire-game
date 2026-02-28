@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://w31bwx7yo6xi"]
+
+[ext_resource type="Texture2D" uid="uid://d0a6lq2khgoeb" path="res://assets/mining/breaking_animation.png" id="1_fsrtr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_temwm"]
+atlas = ExtResource("1_fsrtr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00q8e"]
+atlas = ExtResource("1_fsrtr")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2v7tw"]
+atlas = ExtResource("1_fsrtr")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqtuo"]
+atlas = ExtResource("1_fsrtr")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_avabn"]
+atlas = ExtResource("1_fsrtr")
+region = Rect2(48, 0, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_temwm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00q8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2v7tw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqtuo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_avabn")
+}],
+"loop": true,
+"name": &"main",
+"speed": 5.0
+}]
