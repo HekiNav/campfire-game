@@ -3,18 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://bk3yyn7y6r82i" path="res://assets/inventory/inventoryTile.png" id="1_18d4s"]
 [ext_resource type="Script" uid="uid://brv33oeamuht" path="res://inventory/inventory_tile.gd" id="1_dcwhn"]
 
-[node name="InventoryTile" type="Control" unique_id=1458534332]
+[node name="Control" type="Control" unique_id=2005772785]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 3
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 36.0
+offset_bottom = 36.0
 script = ExtResource("1_dcwhn")
 
-[node name="Control" type="Control" parent="." unique_id=66844675]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Sprite2D" type="Sprite2D" parent="Control" unique_id=1270033712]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1115670724]
+scale = Vector2(3, 3)
 texture = ExtResource("1_18d4s")
