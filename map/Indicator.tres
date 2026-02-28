@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://u3tlc4fy53qq"]
+
+[ext_resource type="Texture2D" uid="uid://2y5qbydk781" path="res://assets/mining/indicator.png" id="1_llg6o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tr5hy"]
+atlas = ExtResource("1_llg6o")
+region = Rect2(17, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_olwx2"]
+atlas = ExtResource("1_llg6o")
+region = Rect2(0, 0, 17, 17)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tr5hy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_olwx2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
