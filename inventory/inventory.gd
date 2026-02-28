@@ -1,5 +1,7 @@
 extends CenterContainer
 
+@export var WIDTH = 8
+@onready var SIZE = global.inventory_size
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
