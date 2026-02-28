@@ -11,4 +11,4 @@ func _on_spawn_bunker_body_entered(body: Node2D) -> void:
 
 func _on_spawn_bunker_body_exited(body: Node2D) -> void:
 	if(body.get_name()=="Player"):
-		global.ogygen_depletion_speed=5
+		global.ogygen_depletion_speed=20

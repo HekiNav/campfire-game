@@ -35,6 +35,7 @@ grow_vertical = 2
 layout_mode = 2
 
 [node name="movingTile" parent="." unique_id=2005772785 instance=ExtResource("2_qse2j")]
+visible = false
 layout_mode = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
