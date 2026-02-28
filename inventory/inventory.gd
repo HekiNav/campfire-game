@@ -99,3 +99,9 @@ func _on_grid_container_gui_input(event: InputEvent) -> void:
 		else:
 			moving_tile.visible = false
 		
+func clear():
+	print("eero")
+	inventory_data = []
+	for x in range(SIZE):
+		if inventory_data.size() <= x: 
+			inventory_data.push_back(null)

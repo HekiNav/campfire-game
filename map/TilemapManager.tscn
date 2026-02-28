@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://dqg7r544ouu1p" path="res://map/MapTileset.tres" id="1_f6brs"]
 [ext_resource type="SpriteFrames" uid="uid://ckmfhkxfqcss0" path="res://map/MiningIndicator.tres" id="3_pgltr"]
 [ext_resource type="SpriteFrames" uid="uid://btaso4x86x42f" path="res://map/Indicator.tres" id="4_ublgp"]
-[ext_resource type="Script" path="res://map/bunkers.gd" id="5_qs6ix"]
+[ext_resource type="Script" uid="uid://sgghwm6gqbfb" path="res://map/bunkers.gd" id="5_qs6ix"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ublgp"]
 light_mode = 1
