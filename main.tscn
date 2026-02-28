@@ -69,6 +69,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
@@ -100,3 +101,15 @@ visible = false
 position = Vector2(1008.5, 537.5)
 scale = Vector2(7.7916675, 7.7916675)
 texture = ExtResource("9_kek77")
+
+[node name="controls" type="Control" parent="CanvasLayer/MarginContainer" unique_id=1273813]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/controls" unique_id=414369382]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -152.0
+offset_bottom = 37.0
+grow_horizontal = 0
