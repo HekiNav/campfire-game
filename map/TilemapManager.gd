@@ -3,6 +3,8 @@ extends Node2D
 @onready var foreground = self.get_node("MapForeground")
 @onready var background = self.get_node("MapBackground")
 @onready var miningIndicator = self.get_node("MiningIndicator")
+@onready var aSprite = miningIndicator.get_node("ASprite")
+
 
 var minedCell: Vector2i
 var miningProgress: float
@@ -23,21 +25,30 @@ func _ready() -> void:
 
 	
 func _physics_process(delta: float) -> void:
-	var mx=floor(self.get_local_mouse_position().x/16)*16
-	var my=floor(self.get_local_mouse_position().y/16)*16
+	var mx=round((self.get_local_mouse_position().x/16)-0.5)*16
+	var my=round((self.get_local_mouse_position().y/16)-0.5)*16
 
-	miningIndicator.position=Vector2i(mx,my)
 	if Input.is_action_pressed("mine"):
 		var selectedCell = foreground.local_to_map(foreground.get_local_mouse_position())
 		if(minedCell==selectedCell):
-			if(1<=miningProgress):
-				print(get_clicked_tile_power())
-				mine_cell()
+			if(foreground.get_cell_tile_data(minedCell)==null):
+				aSprite.get_node("Target").frame=0
 			else:
-				miningProgress=miningProgress+delta
+				aSprite.get_node("Target").frame=1
+				if(1<=miningProgress):
+					print(get_clicked_tile_power())
+					mine_cell()
+					aSprite.frame=0
+				else:
+					aSprite.frame=(floor(miningProgress*5)-1)
+					miningProgress=miningProgress+delta
+					print(miningProgress)
+					miningIndicator.position=Vector2i(mx,my)
 		else:
 			miningProgress=0
 			minedCell=selectedCell
+			miningIndicator.position=Vector2i(mx,my)
+
 	if Input.is_action_pressed("place"):
 		var selectedCell = foreground.local_to_map(foreground.get_local_mouse_position())
 		print(foreground.get_cell_tile_data(selectedCell))
