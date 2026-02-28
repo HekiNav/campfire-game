@@ -2,14 +2,42 @@
 
 [ext_resource type="Texture2D" uid="uid://bk3yyn7y6r82i" path="res://assets/inventory/inventoryTile.png" id="1_18d4s"]
 [ext_resource type="Script" uid="uid://brv33oeamuht" path="res://inventory/inventory_tile.gd" id="1_dcwhn"]
+[ext_resource type="Texture2D" uid="uid://bhvdausevyrf" path="res://assets/inventory/tileHighlight.png" id="3_f18qs"]
+[ext_resource type="FontFile" uid="uid://cfer8jhxb2n43" path="res://assets/fonts/Tiny5-Regular.ttf" id="4_20nbb"]
 
 [node name="Control" type="Control" unique_id=2005772785]
-custom_minimum_size = Vector2(30, 30)
+custom_minimum_size = Vector2(44, 44)
 layout_mode = 3
-offset_right = 36.0
-offset_bottom = 36.0
+offset_right = 48.0
+offset_bottom = 48.0
+mouse_filter = 1
 script = ExtResource("1_dcwhn")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1115670724]
-scale = Vector2(3, 3)
+scale = Vector2(4, 4)
 texture = ExtResource("1_18d4s")
+
+[node name="ItemSprite" type="Sprite2D" parent="." unique_id=1892640688]
+scale = Vector2(4, 4)
+
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=680387640]
+visible = false
+scale = Vector2(4, 4)
+texture = ExtResource("3_f18qs")
+
+[node name="Label" type="Label" parent="." unique_id=2098556350]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_right = -26.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_20nbb")
+text = "12"
+horizontal_alignment = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

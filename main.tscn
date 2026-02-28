@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://co1gg0q726kh7" path="res://map/TilemapManager.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bri2u17w0dnx2" path="res://player/player.tscn" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://d0jy5j1qb2vpo" path="res://assets/light/player.png" id="3_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://dxjqydfrsxa1b" path="res://inventory/inventory.tscn" id="3_h2yge"]
 
 [node name="main" type="Control" unique_id=1560385531]
@@ -12,13 +13,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TilemapManager" parent="." unique_id=873984971 instance=ExtResource("1_ig7tw")]
+[node name="TilemapManager" parent="." unique_id=873984971 node_paths=PackedStringArray("player") instance=ExtResource("1_ig7tw")]
+player = NodePath("../Player")
 
-[node name="Player" parent="." unique_id=797232758 instance=ExtResource("2_0xm2m")]
+[node name="Player" parent="." unique_id=797232758 node_paths=PackedStringArray("inventory") instance=ExtResource("2_0xm2m")]
 position = Vector2(58, 47)
+inventory = NodePath("../CanvasLayer/Inventory")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=463418566]
 zoom = Vector2(5, 5)
+
+[node name="PointLight2D" type="PointLight2D" parent="Player/Camera2D" unique_id=1508930818]
+color = Color(1, 0.83137256, 0.5058824, 0.21960784)
+energy = 3.93
+shadow_enabled = true
+shadow_color = Color(0, 7.659314e-06, 0, 0.06666667)
+shadow_filter = 1
+texture = ExtResource("3_1bvp3")
+texture_scale = 2.3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=155804533]
 
