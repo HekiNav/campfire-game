@@ -42,11 +42,13 @@ func _physics_process(delta: float) -> void:
 					else:
 						aSprite.frame=(floor(miningProgress*5)-1)
 						miningProgress=miningProgress+delta
-						
+						global.mining_direction = Vector2(foreground.get_local_mouse_position() - player.position).normalized()
 			else:
+				global.mining_direction = null
 				miningProgress=0
 				minedCell=selectedCell
-
+		if Input.is_action_just_released("mine"):
+			global.mining_direction = null
 		if Input.is_action_pressed("place"):
 			var selectedCell = foreground.local_to_map(foreground.get_local_mouse_position())
 			if(foreground.get_cell_tile_data(selectedCell)==null):
@@ -75,6 +77,8 @@ func mine_cell():
 	player.inventory.add_items(name,1)
 	supportLevels.set(cell,0)
 	cell_update(cell)
+	global.mining_direction = null
+	
 
 
 func get_clicked_tile_power():
