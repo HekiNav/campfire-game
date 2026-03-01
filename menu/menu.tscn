@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://nqek2ck1q4n8"]
 
 [ext_resource type="Script" uid="uid://d0py6me8c58of" path="res://menu/menu.gd" id="1_j0t7f"]
+[ext_resource type="Texture2D" uid="uid://e2n316kanh8q" path="res://assets/start_screen/StartNEW.png" id="2_pbjm4"]
+[ext_resource type="Texture2D" uid="uid://sk1rsa2c1fiu" path="res://assets/icons/exit_icon.png" id="3_pbjm4"]
+[ext_resource type="FontFile" uid="uid://bvorogivalmgk" path="res://assets/fonts/Jersey10-Regular.ttf" id="3_svuvw"]
 
 [node name="menu" type="Control" unique_id=2041664354]
 layout_mode = 3
@@ -11,43 +14,67 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j0t7f")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=944029625]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=52420017]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.19835883, 0.4043104, 0.5921444, 1)
+texture = ExtResource("2_pbjm4")
+stretch_mode = 6
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1838132338]
-layout_direction = 2
+[node name="CenterContainer2" type="CenterContainer" parent="." unique_id=743644247]
+visible = false
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_right = 0.1
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=712244101]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1441627573]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=712244101]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 16
 alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=294288942]
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=294288942]
 layout_mode = 2
-theme_override_font_sizes/font_size = 64
-text = "Cave Game"
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0.20511743, 0.20511743, 0.20511743, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("3_svuvw")
+theme_override_font_sizes/font_size = 80
+text = "Back
+To The
+Surface"
+horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=172455982]
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=172455982]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_fonts/font = ExtResource("3_svuvw")
+theme_override_font_sizes/font_size = 36
 text = "Start"
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer" unique_id=648730809]
+[node name="Button2" type="Button" parent="CenterContainer/VBoxContainer" unique_id=648730809]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_svuvw")
 theme_override_font_sizes/font_size = 32
-text = "Exit"
+text = "Quit"
+icon = ExtResource("3_pbjm4")
+icon_alignment = 2
+expand_icon = true
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_start_game"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button2" to="." method="_exit_game"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_start_game"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button2" to="." method="_exit_game"]

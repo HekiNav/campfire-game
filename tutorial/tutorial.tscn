@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://btoss33oji0sm"]
+
+[ext_resource type="Texture2D" uid="uid://h68q2c54cec4" path="res://assets/icons/Arrow_icon.png" id="1_burua"]
+[ext_resource type="Script" uid="uid://ca6mihc23y762" path="res://tutorial/tutorial.gd" id="1_vy6qu"]
+[ext_resource type="FontFile" uid="uid://bvorogivalmgk" path="res://assets/fonts/Jersey10-Regular.ttf" id="3_vy6qu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vy6qu"]
+
+[node name="Tutorial" type="Control" unique_id=1397423419]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vy6qu")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=758209614]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.027473006, 2.2067949e-05, 0.14524367, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1841567038]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1496142728]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=443369578]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vy6qu")
+theme_override_font_sizes/font_size = 80
+text = "Welcome!"
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer" unique_id=1637220178]
+layout_mode = 2
+columns = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VBoxContainer/GridContainer" unique_id=2104458026]
+custom_minimum_size = Vector2(375, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_vy6qu")
+theme_override_font_sizes/normal_font_size = 24
+text = "The pathway out of the bunker has collapsed. 
+Now you are starting to run out of oxygen and need to get back to the surface. "
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="CenterContainer/VBoxContainer/GridContainer" unique_id=695057935]
+custom_minimum_size = Vector2(375, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_vy6qu")
+theme_override_font_sizes/normal_font_size = 24
+text = "The cave is now very unstable and may collapse at any moment. You need to use supports to even try to escape the cave."
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="CenterContainer/VBoxContainer/GridContainer" unique_id=1703943811]
+custom_minimum_size = Vector2(375, 0)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_vy6qu")
+theme_override_font_sizes/normal_font_size = 24
+text = "Remember! The air outside of the bunker in the cave is not breathable and you need to go inside the bunker to get some air."
+fit_content = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1650770418]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.77300006
+anchor_right = 1.0
+anchor_bottom = 0.89400005
+offset_top = 0.095947266
+offset_bottom = -0.31201172
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=1563686536]
+layout_mode = 2
+theme_override_constants/margin_right = 20
+
+[node name="Button" type="Button" parent="HBoxContainer/MarginContainer" unique_id=542751625]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+tooltip_text = "Continue"
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vy6qu")
+icon = ExtResource("1_burua")
+expand_icon = true
+
+[connection signal="pressed" from="HBoxContainer/MarginContainer/Button" to="." method="_start_actual_game"]
