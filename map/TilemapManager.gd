@@ -29,12 +29,18 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if not global.is_menu_open:
+		var selectedCell = foreground.local_to_map(foreground.get_local_mouse_position())
 		if Input.is_action_pressed("throw"):
-			dynamite(foreground.local_to_map(player.position),3)
+			var item = ["dynamite",1]
+			var has_item = player.inventory.inventory_data.find_custom(func(e): return e and e[0]  == item[0] and e[1] >= item[1]) >= 0
+			if(has_item):
+				# remove item from inv
+				var i = player.inventory.inventory_data.find_custom(func(e): return e and e[0]  == item[0] and e[1] >= item[1])
+				player.inventory.inventory_data[i][1] -= item[1]
+				dynamite(selectedCell,3)
 		var mx=round((self.get_local_mouse_position().x/16)-0.5)*16
 		var my=round((self.get_local_mouse_position().y/16)-0.5)*16
 		miningIndicator.position=Vector2i(mx,my)
-		var selectedCell = foreground.local_to_map(foreground.get_local_mouse_position())
 		if(foreground.get_cell_tile_data(selectedCell)==null or !selectedCell.distance_to(foreground.local_to_map(player.position))<3):
 			aSprite.get_node("Target").frame=0
 		else:
