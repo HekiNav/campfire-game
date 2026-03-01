@@ -8,7 +8,20 @@
 [ext_resource type="Texture2D" uid="uid://cxnw27fqn25cv" path="res://assets/oxygen_meter/outline.png" id="5_7mycd"]
 [ext_resource type="Script" uid="uid://qylevvdlfiki" path="res://oxygen_controller.gd" id="5_272bh"]
 [ext_resource type="Texture2D" uid="uid://ca56j37f6xcj3" path="res://assets/oxygen_meter/fill.png" id="6_272bh"]
+[ext_resource type="Script" uid="uid://bd4nttav1pcnl" path="res://controls.gd" id="9_dg77c"]
+[ext_resource type="Script" uid="uid://drd25md7ikvm5" path="res://inventory/inventory_manager.gd" id="9_efxa6"]
 [ext_resource type="Texture2D" uid="uid://by6jyt2w1l1qu" path="res://assets/oxygen_meter/warning.png" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://480jdqjbjnin" path="res://inventory/linked_inventories.tscn" id="10_4c57u"]
+[ext_resource type="PackedScene" uid="uid://bium0dpn5eesg" path="res://inventory/crafting.tscn" id="13_ycdy4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efxa6"]
+size = Vector2(10.5, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
+size = Vector2(17, 15)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dg77c"]
+bg_color = Color(0, 0, 0, 0.39215687)
 
 [node name="main" type="Control" unique_id=1560385531]
 layout_mode = 3
@@ -43,9 +56,27 @@ shadow_filter = 1
 texture = ExtResource("2_5vw27")
 texture_scale = 0.43
 
+[node name="locker" type="StaticBody2D" parent="TilemapManager" unique_id=913371101]
+position = Vector2(-24, 21)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TilemapManager/locker" unique_id=413266382]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_efxa6")
+
+[node name="crafting_bench" type="StaticBody2D" parent="TilemapManager" unique_id=1372264646]
+position = Vector2(-48, 42)
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TilemapManager/crafting_bench" unique_id=675425618]
+position = Vector2(51.5, -17.5)
+shape = SubResource("RectangleShape2D_dg77c")
+
 [node name="Player" parent="." unique_id=797232758 node_paths=PackedStringArray("inventory") instance=ExtResource("2_0xm2m")]
 position = Vector2(58, 47)
-inventory = NodePath("../CanvasLayer/Inventory")
+inventory = NodePath("../CanvasLayer/InventoryManager/player_inv")
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=463418566]
 zoom = Vector2(5, 5)
@@ -60,8 +91,6 @@ texture = ExtResource("3_1bvp3")
 texture_scale = 2.3
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=155804533]
-
-[node name="Inventory" parent="CanvasLayer" unique_id=279715357 instance=ExtResource("3_h2yge")]
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=897976646]
 anchors_preset = 15
@@ -102,32 +131,39 @@ position = Vector2(1008.5, 537.5)
 scale = Vector2(7.7916675, 7.7916675)
 texture = ExtResource("9_kek77")
 
-[node name="controls" type="Control" parent="CanvasLayer/MarginContainer" unique_id=1273813]
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer" unique_id=414369382]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_dg77c")
+bbcode_enabled = true
+text = "
+"
+fit_content = true
+scroll_active = false
+script = ExtResource("9_dg77c")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MarginContainer/controls" unique_id=1233857508]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -185.0
-offset_bottom = 253.0
-grow_horizontal = 0
-color = Color(0, 0, 0, 0.59607846)
-
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/controls/ColorRect" unique_id=414369382]
-layout_mode = 1
+[node name="InventoryManager" type="Control" parent="CanvasLayer" unique_id=471920517 node_paths=PackedStringArray("player")]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-bbcode_enabled = true
-text = "[img width=50px]res://assets/input_icons/keyboard_arrows.svg[/img] Move
-[img width=50px]res://assets/input_icons/keyboard_space.svg[/img] Jump
-[img width=50px]res://assets/input_icons/mouse_left.svg[/img] Mine
-[img width=50px]res://assets/input_icons/mouse_right.svg[/img] Build supports
- [img width=40px]res://assets/input_icons/keyboard_e.svg[/img] Inventory
-"
-fit_content = true
-scroll_active = false
+mouse_filter = 2
+script = ExtResource("9_efxa6")
+player = NodePath("../../Player")
+
+[node name="player_inv" parent="CanvasLayer/InventoryManager" unique_id=279715357 instance=ExtResource("3_h2yge")]
+layout_mode = 1
+
+[node name="locker" parent="CanvasLayer/InventoryManager" unique_id=1160039746 node_paths=PackedStringArray("player") instance=ExtResource("10_4c57u")]
+visible = false
+layout_mode = 1
+player = NodePath("../../../Player")
+
+[node name="crafting_ui" parent="CanvasLayer/InventoryManager" unique_id=484869604 node_paths=PackedStringArray("player") instance=ExtResource("13_ycdy4")]
+visible = false
+layout_mode = 1
+player = NodePath("../../../Player")

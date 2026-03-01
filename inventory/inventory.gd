@@ -5,10 +5,11 @@ extends Control
 @export var MAX_STACK_SIZE = 10
 @export var BACKGROUND = true
 @export var LINKED_INV: Inventory
-@onready var SIZE = global.inventory_size
+@export var SIZE = global.inventory_size
 var inventory_tile = preload("res://inventory/inventory_tile.tscn")
 @onready var grid_container: GridContainer = $CenterContainer/Control/GridContainer
 @onready var moving_tile: InventoryTile = $movingTile
+@onready var background: ColorRect = $Background
 
 var picked_up_item = null
 
@@ -41,6 +42,7 @@ var inventory_data = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	background.visible = BACKGROUND
 	grid_container.columns = WIDTH
 	for x in range(SIZE):
 		if inventory_data.size() <= x: 
@@ -61,12 +63,6 @@ func update_inventory_ui():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("inventory") and not LINKED_INV:
-		visible = !visible
-		global.is_menu_open = visible
 
 func _on_grid_container_gui_input(event: InputEvent) -> void:
 	const TILE_WIDTH = 12*4

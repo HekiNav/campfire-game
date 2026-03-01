@@ -6,6 +6,10 @@ extends CharacterBody2D
 @export var JUMP_VELOCITY = -150.0
 @export var inventory: Inventory
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var area_2d: Area2D = $Area2D
+
+func colliding():
+	return area_2d.get_overlapping_bodies()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
