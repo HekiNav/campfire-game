@@ -44,7 +44,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_5mlte"]
 resource_name = "block_fall"
-length = 1.3666667
+length = 2.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -52,10 +52,10 @@ tracks/0/path = NodePath("Sprite2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.19999981, 0.26666668, 0.33333316, 0.4, 0.4666665, 0.5333333, 0.6, 0.6666665, 0.73333335, 0.79999983, 0.93333334, 1.0666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.19999981, 0.26666668, 0.33333316, 0.4, 0.4666665, 0.5333333, 0.6, 0.6666665, 0.73333335, 0.79999983, 0.86666673, 0.9333334, 0.9999999, 1.0666667, 1.1333332, 1.2, 1.2666665, 1.3333334, 1.4, 1.4666667, 1.5000002, 1.566667, 1.6333333, 1.7000002, 1.7666668, 1.8333336, 1.9, 1.9666668, 2.0333335, 2.1000001, 2.1666667, 2.2333333, 2.3666666, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(0, 0), Vector2(0, 16)]
+"values": [Vector2(0, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(-0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(0.5, 0), Vector2(-0.5, 0), Vector2(0, 0), Vector2(0, 16)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -64,7 +64,7 @@ tracks/1/path = NodePath("GPUParticles2D:amount")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.0333333, 1.2333333),
+"times": PackedFloat32Array(0, 2.4666665, 2.6666665),
 "transitions": PackedFloat32Array(1, 0.031250022, 27.857622),
 "update": 1,
 "values": [100, 100, 1]
@@ -76,7 +76,7 @@ tracks/2/path = NodePath("GPUParticles2D:emitting")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.0666666, 1.3),
+"times": PackedFloat32Array(0, 2.4999998, 2.733333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, true, false]
@@ -116,6 +116,7 @@ libraries/ = SubResource("AnimationLibrary_n7l0d")
 autoplay = &"block_fall"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=242332137]
+position = Vector2(-0.19999641, 0)
 texture = ExtResource("1_n7l0d")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1189603551]
@@ -128,7 +129,7 @@ position = Vector2(0, 24)
 occluder = SubResource("OccluderPolygon2D_n7l0d")
 
 [node name="Timer" type="Timer" parent="." unique_id=2056700470]
-wait_time = 2.0
+wait_time = 3.0
 one_shot = true
 autostart = true
 

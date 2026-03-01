@@ -1,7 +1,9 @@
 extends Control
 
 var level = 100
-@onready var texture_progress_bar: TextureProgressBar = $TextureProgressBar
+@onready var texture_progress_bar: TextureProgressBar = $Control2/TextureProgressBar
+@onready var warning: Sprite2D = $Control/Warning
+
 var warning_time=0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,9 +21,9 @@ func _process(delta: float) -> void:
 		warning_time=warning_time+delta
 		if(0.5<warning_time):
 			warning_time=0
-			self.get_node("Warning").visible=!self.get_node("Warning").visible
+			warning.visible=!warning.visible
 	else:
-		self.get_node("Warning").visible=false
+		warning.visible=false
 		
 	if (level==0):
 		var player = self.get_parent().get_parent().get_parent().get_node("Player")

@@ -118,34 +118,38 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 
-[node name="OxygenController" type="Control" parent="CanvasLayer/MarginContainer" unique_id=1886704045]
+[node name="OxygenController" type="HBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=839379994]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 script = ExtResource("5_272bh")
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/OxygenController" unique_id=392105460]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -33.0
-offset_top = -193.0
-offset_right = -25.0
-offset_bottom = -145.0
+[node name="Control" type="Control" parent="CanvasLayer/MarginContainer/OxygenController" unique_id=658978316]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Warning" type="Sprite2D" parent="CanvasLayer/MarginContainer/OxygenController/Control" unique_id=1275925038]
+position = Vector2(48, 48)
+scale = Vector2(4, 4)
+texture = ExtResource("9_kek77")
+
+[node name="Control2" type="Control" parent="CanvasLayer/MarginContainer/OxygenController" unique_id=1584360629]
+custom_minimum_size = Vector2(16, 96)
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer/MarginContainer/OxygenController/Control2" unique_id=392105460]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 48.0
 grow_horizontal = 0
 grow_vertical = 0
-scale = Vector2(4, 4)
+scale = Vector2(2, 2)
+size_flags_vertical = 8
 value = 75.0
 fill_mode = 3
 texture_over = ExtResource("5_7mycd")
 texture_progress = ExtResource("6_272bh")
-
-[node name="Warning" type="Sprite2D" parent="CanvasLayer/MarginContainer/OxygenController" unique_id=1275925038]
-visible = false
-position = Vector2(1008.5, 537.5)
-scale = Vector2(7.7916675, 7.7916675)
-texture = ExtResource("9_kek77")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer" unique_id=414369382]
 z_index = 100
