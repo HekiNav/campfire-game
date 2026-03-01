@@ -38,7 +38,8 @@ var crafting_recipes = [
 		],
 		"reward": {
 			"type": "item",
-			"key": "support"
+			"key": "support",
+			"count": 3
 		}
 	},
 	{
@@ -49,7 +50,8 @@ var crafting_recipes = [
 		],
 		"reward": {
 			"type": "item",
-			"key": "dynamite"
+			"key": "dynamite",
+			"count": 1
 		}
 	}
 ]

@@ -33,7 +33,7 @@ func _load():
 				player.inventory.inventory_data[i][1] -= m[1]
 				
 			if r.reward.type == "item":
-				player.inventory.add_items(r.reward.key, 1)
+				player.inventory.add_items(r.reward.key, r.reward.count)
 			elif r.reward.type == "global_var":
 				global[r.reward.key] += 1
 			timer.start()

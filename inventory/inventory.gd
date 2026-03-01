@@ -42,7 +42,7 @@ var inventory_data = []
 var SIZE = 0
 # Called when the node enters the scene tree for the first time.
 func get_inv_size():
-	return global.inventory_size * (global.inventory_upgrades + 1) if TYPE == "inv" else global.locker_size
+	return global.inventory_size * (global.inventory_upgrades + 1) if TYPE == "inv" else global.locker_size + (global.inventory_upgrades *8)
 func _ready() -> void:
 	SIZE = get_inv_size()
 	background.visible = BACKGROUND
