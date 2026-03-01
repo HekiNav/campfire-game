@@ -108,7 +108,8 @@ func mine_cell():
 		supportLevels.set(cell,0)
 		cell_update(cell)
 		global.mining_direction = null
-		
+	else:
+		global.alert.emit("Inventory is full")
 
 
 func get_clicked_tile_power():
