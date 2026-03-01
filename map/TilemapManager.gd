@@ -31,7 +31,9 @@ func _physics_process(delta: float) -> void:
 		miningIndicator.position=Vector2i(mx,my)
 		if Input.is_action_pressed("mine"):
 			var selectedCell = foreground.local_to_map(foreground.get_local_mouse_position())
-			if(minedCell==selectedCell):
+			print((foreground.local_to_map(player.position)))
+			print(player.position)
+			if(minedCell==selectedCell and selectedCell.distance_to(foreground.local_to_map(player.position))<2):
 				if(foreground.get_cell_tile_data(minedCell)==null):
 					aSprite.get_node("Target").frame=0
 				else:
