@@ -3,6 +3,8 @@ extends Control
 
 @export var WIDTH = 8
 @export var MAX_STACK_SIZE = 10
+@export var BACKGROUND = true
+@export var LINKED_INV: Inventory
 @onready var SIZE = global.inventory_size
 var inventory_tile = preload("res://inventory/inventory_tile.tscn")
 @onready var grid_container: GridContainer = $CenterContainer/GridContainer
@@ -62,7 +64,7 @@ func _process(delta: float) -> void:
 
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("inventory"):
+	if event.is_action_pressed("inventory") and not LINKED_INV:
 		visible = !visible
 		global.is_menu_open = visible
 
@@ -77,7 +79,11 @@ func _on_grid_container_gui_input(event: InputEvent) -> void:
 			c.set_hovered(false)
 		grid_container.get_child(i).set_hovered(true)
 		
-		if event.button_mask == 1 and event.is_pressed() and inventory_data[i] and not picked_up_item:
+		if event.button_mask == 2 and event.is_pressed() and inventory_data[i] and not picked_up_item and LINKED_INV:
+			LINKED_INV.add_items(inventory_data[i][0], inventory_data[i][1])
+			inventory_data[i] = null
+			update_inventory_ui()
+		elif event.button_mask == 1 and event.is_pressed() and inventory_data[i] and not picked_up_item:
 			picked_up_item = inventory_data[i]
 			inventory_data[i] = null
 			update_inventory_ui()
