@@ -14,7 +14,6 @@ const COLLAPSE = preload("res://collapse/collapse.tscn")
 
 var supportLevels: Dictionary
 
-
 var minedCell: Vector2i
 var miningProgress: float
 
@@ -25,11 +24,23 @@ func _ready() -> void:
 
 	
 func _physics_process(delta: float) -> void:
+	var exploded = []
+	var index=0
+	
+	
 	if not global.is_menu_open:
+		var selectedCell = foreground.local_to_map(foreground.get_local_mouse_position())
+		if Input.is_action_pressed("throw"):
+			var item = ["dynamite",1]
+			var has_item = player.inventory.inventory_data.find_custom(func(e): return e and e[0]  == item[0] and e[1] >= item[1]) >= 0
+			if(has_item):
+				# remove item from inv
+				var i = player.inventory.inventory_data.find_custom(func(e): return e and e[0]  == item[0] and e[1] >= item[1])
+				player.inventory.inventory_data[i][1] -= item[1]
+				dynamite(selectedCell,3)
 		var mx=round((self.get_local_mouse_position().x/16)-0.5)*16
 		var my=round((self.get_local_mouse_position().y/16)-0.5)*16
 		miningIndicator.position=Vector2i(mx,my)
-		var selectedCell = foreground.local_to_map(foreground.get_local_mouse_position())
 		if(foreground.get_cell_tile_data(selectedCell)==null or !selectedCell.distance_to(foreground.local_to_map(player.position))<3):
 			aSprite.get_node("Target").frame=0
 		else:
@@ -66,7 +77,8 @@ func _physics_process(delta: float) -> void:
 				foreground.set_cell(selectedCell,0,Vector2i(2, 3), 0)
 				supportLevels.set(selectedCell,5)
 				cell_update(selectedCell)
-
+		
+				
 func mine_cell():
 	var cell = foreground.local_to_map(foreground.get_local_mouse_position())
 	var name = get_clicked_tile_power()
@@ -157,3 +169,18 @@ func cell_update(cell: Vector2i, collapse = true):
 			if (i >= notSupported.size()): cell_update(k, false)
 		)
 		collapse_effects.add_child(newEffect)
+		
+func dynamite(location: Vector2i,power: int):
+	realground.set_cell(location,-1,Vector2i(1, 1), -1)
+	print("isitnull", foreground.get_cell_tile_data(location)==null)
+	if(power!=0):
+		foreground.set_cell(location,-1,Vector2i(1, 1), -1)
+		background.set_cell(location,0,Vector2i(0, 1), 0)
+		if(Vector2i(location.x+1, location.y)!=null):
+			dynamite(Vector2i(location.x+1, location.y),power-1)
+		if(Vector2i(location.x-1, location.y)!=null):
+			dynamite(Vector2i(location.x-1, location.y),power-1)
+		if(Vector2i(location.x, location.y+1)!=null):
+			dynamite(Vector2i(location.x, location.y+1),power-1)
+		if(Vector2i(location.x, location.y-1)!=null):
+			dynamite(Vector2i(location.x, location.y-1),power-1)
