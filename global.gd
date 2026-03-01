@@ -24,5 +24,11 @@ const ITEMS = {
 	},
 	"support": {
 		"sprite": "res://assets/spritesheet/Support_item.png"
+	},
+	"debris": {
+		"sprite": "res://assets/spritesheet/Trash_item.png"
+	},
+	"fossil": {
+		"sprite": "res://assets/spritesheet/Bone_item.png"
 	}
 }
