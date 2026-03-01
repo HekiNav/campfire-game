@@ -40,6 +40,17 @@ var crafting_recipes = [
 			"type": "item",
 			"key": "support"
 		}
+	},
+	{
+		"name": "Dynamite",
+		"ingredients":  [
+			["debris",  1],
+			["fossil",  1]
+		],
+		"reward": {
+			"type": "item",
+			"key": "dynamite"
+		}
 	}
 ]
 
