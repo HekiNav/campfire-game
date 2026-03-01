@@ -105,11 +105,29 @@ texture = ExtResource("9_kek77")
 [node name="controls" type="Control" parent="CanvasLayer/MarginContainer" unique_id=1273813]
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/controls" unique_id=414369382]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MarginContainer/controls" unique_id=1233857508]
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -152.0
-offset_bottom = 37.0
+offset_left = -185.0
+offset_bottom = 253.0
 grow_horizontal = 0
+color = Color(0, 0, 0, 0.59607846)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer/controls/ColorRect" unique_id=414369382]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+bbcode_enabled = true
+text = "[img width=50px]res://assets/input_icons/keyboard_arrows.svg[/img] Move
+[img width=50px]res://assets/input_icons/keyboard_space.svg[/img] Jump
+[img width=50px]res://assets/input_icons/mouse_left.svg[/img] Mine
+[img width=50px]res://assets/input_icons/mouse_right.svg[/img] Build supports
+ [img width=40px]res://assets/input_icons/keyboard_e.svg[/img] Inventory
+"
+fit_content = true
+scroll_active = false
