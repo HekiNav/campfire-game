@@ -10,6 +10,8 @@ var mining_direction = null
 var oxygen_upgrades = 0
 var inventory_upgrades = 0
 
+signal alert
+
 var crafting_recipes = [
 	{
 		"name": "Larger oxygen tank (+50)",

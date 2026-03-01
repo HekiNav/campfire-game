@@ -38,14 +38,19 @@ func _physics_process(delta: float) -> void:
 				var i = player.inventory.inventory_data.find_custom(func(e): return e and e[0]  == item[0] and e[1] >= item[1])
 				player.inventory.inventory_data[i][1] -= item[1]
 				dynamite(selectedCell,3)
+			else:
+				global.alert.emit("No dynamite")
 		var mx=round((self.get_local_mouse_position().x/16)-0.5)*16
 		var my=round((self.get_local_mouse_position().y/16)-0.5)*16
 		miningIndicator.position=Vector2i(mx,my)
+		
 		if(foreground.get_cell_tile_data(selectedCell)==null or !selectedCell.distance_to(foreground.local_to_map(player.position))<3):
 			aSprite.get_node("Target").frame=0
 		else:
 			aSprite.get_node("Target").frame=1
 		if Input.is_action_pressed("mine"):
+			if (selectedCell.distance_to(foreground.local_to_map(player.position))>=3):
+				global.alert.emit("Cannot reach")
 			if(minedCell==selectedCell and selectedCell.distance_to(foreground.local_to_map(player.position))<3 ):
 				if(foreground.get_cell_tile_data(minedCell)==null):
 					aSprite.get_node("Target").frame=0
@@ -68,6 +73,8 @@ func _physics_process(delta: float) -> void:
 			var bunker_one_check = (-2<=selectedCell.x and selectedCell.x<=5) and (0<=selectedCell.y and selectedCell.y<=1)
 			var item = ["support",1]
 			var has_item = player.inventory.inventory_data.find_custom(func(e): return e and e[0]  == item[0] and e[1] >= item[1]) >= 0
+			if not has_item:
+				global.alert.emit("No supports in inventory")
 			if(foreground.get_cell_tile_data(selectedCell)==null and not bunker_one_check and has_item):
 				# remove item from inv
 				var i = player.inventory.inventory_data.find_custom(func(e): return e and e[0]  == item[0] and e[1] >= item[1])

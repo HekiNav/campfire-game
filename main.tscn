@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://drd25md7ikvm5" path="res://inventory/inventory_manager.gd" id="9_efxa6"]
 [ext_resource type="Texture2D" uid="uid://by6jyt2w1l1qu" path="res://assets/oxygen_meter/warning.png" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://480jdqjbjnin" path="res://inventory/linked_inventories.tscn" id="10_4c57u"]
+[ext_resource type="FontFile" uid="uid://bvorogivalmgk" path="res://assets/fonts/Jersey10-Regular.ttf" id="10_w48qg"]
+[ext_resource type="Script" uid="uid://c6p05cv33w1sd" path="res://alert.gd" id="11_vivmo"]
 [ext_resource type="PackedScene" uid="uid://bium0dpn5eesg" path="res://inventory/crafting.tscn" id="13_ycdy4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_efxa6"]
@@ -111,6 +113,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
@@ -157,6 +160,21 @@ text = "
 fit_content = true
 scroll_active = false
 script = ExtResource("9_dg77c")
+
+[node name="Control" type="Control" parent="CanvasLayer/MarginContainer" unique_id=1227331250]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Control" unique_id=1677749827]
+layout_mode = 1
+offset_right = 1.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 0.33551362, 0.2695955, 1)
+theme_override_fonts/font = ExtResource("10_w48qg")
+theme_override_font_sizes/font_size = 48
+script = ExtResource("11_vivmo")
+
+[node name="Timer" type="Timer" parent="CanvasLayer/MarginContainer/Control/Label" unique_id=2054996971]
+wait_time = 3.0
 
 [node name="InventoryManager" type="Control" parent="CanvasLayer" unique_id=471920517 node_paths=PackedStringArray("player")]
 layout_mode = 3
