@@ -3,9 +3,41 @@
 [ext_resource type="Script" uid="uid://bylyqy2ig7evg" path="res://inventory/crafting_recipe.gd" id="1_vg45e"]
 [ext_resource type="FontFile" uid="uid://bvorogivalmgk" path="res://assets/fonts/Jersey10-Regular.ttf" id="2_2h6gb"]
 
-[node name="craftingRecipe" type="Control" unique_id=1359143822]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 3
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nc2j"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0, 0, 0, 0.6666667)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.69803923)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2h6gb"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 0.69803923)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+anti_aliasing = false
+
+[node name="craftingRecipe" type="VBoxContainer" unique_id=1987490449]
+custom_minimum_size = Vector2(0, 100)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,15 +47,22 @@ script = ExtResource("1_vg45e")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1689246842]
 custom_minimum_size = Vector2(0, 32)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("2_2h6gb")
 theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=697061467]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_2h6gb")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_1nc2j")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_2h6gb")
+text = "Craft"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

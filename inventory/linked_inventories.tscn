@@ -37,7 +37,7 @@ layout_mode = 2
 size_flags_vertical = 6
 BACKGROUND = false
 LINKED_INV = NodePath("../Inventory2")
-SIZE = 24
+TYPE = "locker"
 
 [node name="Inventory2" parent="VBoxContainer" unique_id=1664034673 node_paths=PackedStringArray("LINKED_INV") instance=ExtResource("2_yk6vw")]
 visible = true

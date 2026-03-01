@@ -11,7 +11,8 @@ func update() -> void:
 	texture_progress_bar.value = level
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	level = min(max(level - delta * global.ogygen_depletion_speed,0),100)
+	texture_progress_bar.max_value = 100 + 50 * global.oxygen_upgrades
+	level = min(max(level - delta * global.ogygen_depletion_speed,0),texture_progress_bar.max_value)
 	update()
 	
 	if (level<30):

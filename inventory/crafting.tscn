@@ -51,3 +51,7 @@ layout_mode = 2
 size_flags_vertical = 6
 BACKGROUND = false
 LINKED_INV = NodePath("")
+
+[node name="Timer" type="Timer" parent="." unique_id=315310352]
+wait_time = 0.1
+one_shot = true

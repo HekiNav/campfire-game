@@ -5,7 +5,7 @@ extends Control
 @export var MAX_STACK_SIZE = 10
 @export var BACKGROUND = true
 @export var LINKED_INV: Inventory
-@export var SIZE = global.inventory_size
+@export var TYPE = "inv"
 var inventory_tile = preload("res://inventory/inventory_tile.tscn")
 @onready var grid_container: GridContainer = $CenterContainer/Control/GridContainer
 @onready var moving_tile: InventoryTile = $movingTile
@@ -36,12 +36,15 @@ func add_items(item: String, count = 1):
 			return false
 	return true
 
-var inventory_data = []
+var inventory_data = [["gold",8], ["iron", 6], ["aluminium",6], ["fossil",3], ["debris",2]]
 
 
-
+var SIZE = 0
 # Called when the node enters the scene tree for the first time.
+func get_inv_size():
+	return global.inventory_size * (global.inventory_upgrades + 1) if TYPE == "inv" else global.locker_size
 func _ready() -> void:
+	SIZE = get_inv_size()
 	background.visible = BACKGROUND
 	grid_container.columns = WIDTH
 	for x in range(SIZE):
@@ -50,7 +53,6 @@ func _ready() -> void:
 		var new_tile = inventory_tile.instantiate()
 		new_tile.background = true
 		grid_container.add_child(new_tile)
-		
 	update_inventory_ui()
 	print(inventory_data)
 
@@ -62,6 +64,26 @@ func update_inventory_ui():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	for s in inventory_data:
+		if s and s[1] == 0:
+			var i = inventory_data.find(s)
+			inventory_data[i] = null
+			update_inventory_ui()
+	if SIZE != get_inv_size():
+		
+		SIZE = get_inv_size()
+		for c in grid_container.get_children():
+			c.queue_free()
+		print(inventory_data)
+		
+		for x in range(SIZE):
+			if inventory_data.size() <= x: 
+				print("kiojokipfdkoidf")
+				inventory_data.push_back(null)
+			var new_tile = inventory_tile.instantiate()
+			new_tile.background = true
+			grid_container.add_child(new_tile)
+		update_inventory_ui()
 	pass
 
 func _on_grid_container_gui_input(event: InputEvent) -> void:
