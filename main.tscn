@@ -31,6 +31,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=786510225]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer2" unique_id=1393014914]
+z_index = -5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.21568628, 0.80784315, 1, 1)
+metadata/_edit_use_anchors_ = true
+
 [node name="TilemapManager" parent="." unique_id=873984971 node_paths=PackedStringArray("player") instance=ExtResource("1_ig7tw")]
 player = NodePath("../Player")
 
