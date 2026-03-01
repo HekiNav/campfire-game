@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://h68q2c54cec4" path="res://assets/icons/Arrow_icon.png" id="1_burua"]
 [ext_resource type="Script" uid="uid://ca6mihc23y762" path="res://tutorial/tutorial.gd" id="1_vy6qu"]
+[ext_resource type="Texture2D" uid="uid://dv4g1ngxnckca" path="res://assets/spritesheet/DarkStone.png" id="2_qk73h"]
 [ext_resource type="FontFile" uid="uid://bvorogivalmgk" path="res://assets/fonts/Jersey10-Regular.ttf" id="3_vy6qu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vy6qu"]
@@ -23,6 +24,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.027473006, 2.2067949e-05, 0.14524367, 1)
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1705881133]
+texture_repeat = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qk73h")
+stretch_mode = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=1841567038]
 layout_mode = 1
