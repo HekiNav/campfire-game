@@ -132,6 +132,11 @@ animations = [{
 "name": &"mine_h",
 "speed": 10.0
 }, {
+"frames": [],
+"loop": true,
+"name": &"mine_v",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lihj4")

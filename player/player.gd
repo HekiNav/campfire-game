@@ -12,10 +12,17 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor() and not global.is_menu_open:
+	if global.mining_direction && global.mining_direction.y < -0.5:
+		animated_sprite_2d.play("mine_v")
+	elif global.mining_direction && global.mining_direction.x < -0.5:
+		animated_sprite_2d.play("mine_h")
+		animated_sprite_2d.flip_h = true
+	elif global.mining_direction && global.mining_direction.x > -0.5:
+		animated_sprite_2d.play("mine_h")
+		animated_sprite_2d.flip_h = false
+	elif Input.is_action_just_pressed("jump") and is_on_floor() and not global.is_menu_open:
 		velocity.y = JUMP_VELOCITY
-	if (velocity.x<0):
+	elif (velocity.x<0):
 		animated_sprite_2d.flip_h = true
 		animated_sprite_2d.play("walk")
 	elif  (velocity.x>0):
