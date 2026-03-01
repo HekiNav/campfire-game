@@ -16,15 +16,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vy6qu")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=758209614]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.027473006, 2.2067949e-05, 0.14524367, 1)
-
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1705881133]
 texture_repeat = 2
 layout_mode = 1
@@ -33,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(4, 4)
 texture = ExtResource("2_qk73h")
 stretch_mode = 1
 
@@ -51,7 +43,7 @@ alignment = 1
 [node name="Label" type="Label" parent="CenterContainer/VBoxContainer" unique_id=443369578]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_vy6qu")
-theme_override_font_sizes/font_size = 80
+theme_override_font_sizes/font_size = 128
 text = "Welcome!"
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer/VBoxContainer" unique_id=1637220178]
@@ -62,7 +54,7 @@ columns = 3
 custom_minimum_size = Vector2(375, 0)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("3_vy6qu")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 48
 text = "The pathway out of the bunker has collapsed. 
 Now you are starting to run out of oxygen and need to get back to the surface. "
 fit_content = true
@@ -71,7 +63,7 @@ fit_content = true
 custom_minimum_size = Vector2(375, 0)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("3_vy6qu")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 48
 text = "The cave is now very unstable and may collapse at any moment. You need to use supports to even try to escape the cave."
 fit_content = true
 
@@ -79,7 +71,7 @@ fit_content = true
 custom_minimum_size = Vector2(375, 0)
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("3_vy6qu")
-theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/normal_font_size = 48
 text = "Remember! The air outside of the bunker in the cave is not breathable and you need to go inside the bunker to get some air."
 fit_content = true
 
