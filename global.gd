@@ -61,6 +61,7 @@ var keybinds = {
 [img width=50px]res://assets/input_icons/keyboard_space.svg[/img] Jump
 [img width=50px]res://assets/input_icons/mouse_left.svg[/img] Mine
 [img width=50px]res://assets/input_icons/mouse_right.svg[/img] Build supports
+ [img width=40px]res://assets/input_icons/keyboard_f.svg[/img] Explode dynamite
  [img width=40px]res://assets/input_icons/keyboard_e.svg[/img] Inventory',
 "menu": '
 [img width=50px]res://assets/input_icons/mouse_left.svg[/img] Move items
@@ -94,5 +95,8 @@ const ITEMS = {
 	},
 	"fossil": {
 		"sprite": "res://assets/spritesheet/Bone_item.png"
+	},
+	"dynamite": {
+		"sprite": "res://assets/spritesheet/dynamite_item.png"
 	}
 }
