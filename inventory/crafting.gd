@@ -25,7 +25,7 @@ func _load():
 		new_recipe.RECIPE = r
 		var can_buy = true
 		for i in r.ingredients:
-			can_buy = player.inventory.inventory_data.find_custom(func(e): return e and e[0]  == i[0] and e[1] >= i[1]) >= 0
+			can_buy = can_buy && player.inventory.inventory_data.find_custom(func(e): return e and e[0]  == i[0] and e[1] >= i[1]) >= 0
 		new_recipe.CAN_BUY = can_buy
 		new_recipe.buy.connect(func():
 			for m in r.ingredients:

@@ -36,7 +36,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CenterContainer" unique_id=704793763]
-custom_minimum_size = Vector2(500, 200)
+custom_minimum_size = Vector2(500, 400)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -45,12 +45,11 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Inventory" parent="VBoxContainer" unique_id=1664034673 node_paths=PackedStringArray("LINKED_INV") instance=ExtResource("2_mywmh")]
+[node name="Inventory" parent="VBoxContainer" unique_id=1664034673 instance=ExtResource("2_mywmh")]
 visible = true
 layout_mode = 2
 size_flags_vertical = 6
 BACKGROUND = false
-LINKED_INV = NodePath("")
 
 [node name="Timer" type="Timer" parent="." unique_id=315310352]
 wait_time = 0.1

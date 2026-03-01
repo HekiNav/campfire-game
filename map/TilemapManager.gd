@@ -60,9 +60,15 @@ func _physics_process(delta: float) -> void:
 			global.mining_direction = null
 		if Input.is_action_pressed("place"):
 			var bunker_one_check = (-2<=selectedCell.x and selectedCell.x<=5) and (0<=selectedCell.y and selectedCell.y<=1)
-			if(foreground.get_cell_tile_data(selectedCell)==null and not bunker_one_check):
+			var item = ["support",1]
+			var has_item = player.inventory.inventory_data.find_custom(func(e): return e and e[0]  == item[0] and e[1] >= item[1]) >= 0
+			if(foreground.get_cell_tile_data(selectedCell)==null and not bunker_one_check and has_item):
+				# remove item from inv
+				var i = player.inventory.inventory_data.find_custom(func(e): return e and e[0]  == item[0] and e[1] >= item[1])
+				player.inventory.inventory_data[i][1] -= item[1]
+				
 				print(selectedCell)
-				foreground.set_cell(selectedCell,0,Vector2i(1, 1), 0)
+				foreground.set_cell(selectedCell,0,Vector2i(2, 3), 0)
 				supportLevels.set(selectedCell,5)
 				cell_update(selectedCell)
 		
