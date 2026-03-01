@@ -10,9 +10,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 	
-func _start_game():
+func _start_actual_game():
 	visible = false
-	get_tree().change_scene_to_file("res://tutorial/tutorial.tscn")
-	
-func _exit_game():
-	get_tree().quit()
+	get_tree().change_scene_to_file("res://main.tscn")
