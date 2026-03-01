@@ -48,9 +48,6 @@ func _ready() -> void:
 		grid_container.add_child(new_tile)
 		
 	update_inventory_ui()
-	add_items("test",2)
-	add_items("test",9)
-	add_items("test",67)
 	print(inventory_data)
 
 func update_inventory_ui():

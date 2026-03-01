@@ -37,7 +37,6 @@ func _physics_process(delta: float) -> void:
 				else:
 					aSprite.get_node("Target").frame=1
 					if(1<=miningProgress):
-						print(get_clicked_tile_power())
 						mine_cell()
 						aSprite.frame=0
 					else:
@@ -94,9 +93,7 @@ func cell_update(cell: Vector2i, collapse = true):
 		supportLevels[cell] = 10
 	var supports = []
 	for k in supportLevels.keys():
-		print(supportLevels[k])
 		if supportLevels[k] != 10:
-			print(k)
 			supportLevels[k] = 0
 		else:
 			supports.push_back(k)
@@ -117,12 +114,10 @@ func cell_update(cell: Vector2i, collapse = true):
 	var weaklySupported = []
 	var notSupported = []
 	for k in supportLevels.keys():
-		print("erfi9oerfi ",supportLevels[k])
 		if supportLevels[k] == 0:
 			notSupported.push_back(k)
 		elif supportLevels[k] < 5:
 			weaklySupported.push_back(k)
-	print(weaklySupported, notSupported, supportLevels)
 	if not collapse:
 		return
 	for k in weaklySupported:
@@ -136,14 +131,14 @@ func cell_update(cell: Vector2i, collapse = true):
 		if weaklySupported.has(k+Vector2i.LEFT) && not notSupported.has(k+Vector2i.LEFT) && supportLevels[k+Vector2i.LEFT] < 5: notSupported.push_back(k+Vector2i.LEFT)
 		if weaklySupported.has(k+Vector2i.RIGHT) && not notSupported.has(k+Vector2i.RIGHT) && supportLevels[k+Vector2i.RIGHT] < 5: notSupported.push_back(k+Vector2i.RIGHT)
 		var newEffect: Node2D = COLLAPSE.instantiate()
-		
 		newEffect.position = (Vector2(k) + Vector2(0.5, -0.5)) * 16
 		var i = 0
 		newEffect.done.connect(func():
 			foreground.set_cell(k,0,Vector2i(0, 0), 0)
+			supportLevels.erase(k)
 			newEffect.queue_free()
 			await get_tree().process_frame
 			i += 1
-			cell_update(k, false)
+			if (i >= notSupported.size()): cell_update(k, false)
 		)
 		collapse_effects.add_child(newEffect)
