@@ -33,12 +33,12 @@ func _physics_process(delta: float) -> void:
 			var selectedCell = foreground.local_to_map(foreground.get_local_mouse_position())
 			print((foreground.local_to_map(player.position)))
 			print(player.position)
-			if(minedCell==selectedCell and selectedCell.distance_to(foreground.local_to_map(player.position))<2):
+			if(minedCell==selectedCell and selectedCell.distance_to(foreground.local_to_map(player.position))<3):
 				if(foreground.get_cell_tile_data(minedCell)==null):
 					aSprite.get_node("Target").frame=0
 				else:
 					aSprite.get_node("Target").frame=1
-					if(1<=miningProgress):
+					if(foreground.get_cell_tile_data(selectedCell).get_custom_data("hardness")<=miningProgress):
 						mine_cell()
 						aSprite.frame=0
 					else:
