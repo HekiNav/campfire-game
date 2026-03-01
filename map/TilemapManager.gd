@@ -29,13 +29,13 @@ func _physics_process(delta: float) -> void:
 		var mx=round((self.get_local_mouse_position().x/16)-0.5)*16
 		var my=round((self.get_local_mouse_position().y/16)-0.5)*16
 		miningIndicator.position=Vector2i(mx,my)
-		if(foreground.get_cell_tile_data(foreground.local_to_map(get_local_mouse_position()))==null or !foreground.local_to_map(get_local_mouse_position()).distance_to(foreground.local_to_map(player.position))<3):
+		var selectedCell = foreground.local_to_map(foreground.get_local_mouse_position())
+		if(foreground.get_cell_tile_data(selectedCell)==null or !selectedCell.distance_to(foreground.local_to_map(player.position))<3):
 			aSprite.get_node("Target").frame=0
 		else:
 			aSprite.get_node("Target").frame=1
 		if Input.is_action_pressed("mine"):
-			var selectedCell = foreground.local_to_map(foreground.get_local_mouse_position())
-			if(minedCell==selectedCell and selectedCell.distance_to(foreground.local_to_map(player.position))<3):
+			if(minedCell==selectedCell and selectedCell.distance_to(foreground.local_to_map(player.position))<3 ):
 				if(foreground.get_cell_tile_data(minedCell)==null):
 					aSprite.get_node("Target").frame=0
 				else:
@@ -54,7 +54,6 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_released("mine"):
 			global.mining_direction = null
 		if Input.is_action_pressed("place"):
-			var selectedCell = foreground.local_to_map(foreground.get_local_mouse_position())
 			var bunker_one_check = (-2<=selectedCell.x and selectedCell.x<=5) and (0<=selectedCell.y and selectedCell.y<=1)
 			if(foreground.get_cell_tile_data(selectedCell)==null and not bunker_one_check):
 				print(selectedCell)
@@ -65,26 +64,26 @@ func _physics_process(delta: float) -> void:
 func mine_cell():
 	var cell = foreground.local_to_map(foreground.get_local_mouse_position())
 	var name = get_clicked_tile_power()
-	foreground.set_cell(cell,-1,Vector2i(0, 0), 0)
-	realground.set_cell(cell,-1,Vector2i(0, 0), 0)
-	background.set_cell(cell,0,Vector2i(0, 1), 0)
-	
-	realground.set_cell(Vector2i(cell.x+1,cell.y),-1,Vector2i(0, 0), 0)
-	realground.set_cell(Vector2i(cell.x-1,cell.y),-1,Vector2i(0, 0), 0)
-	realground.set_cell(Vector2i(cell.x,cell.y+1),-1,Vector2i(0, 0), 0)
-	realground.set_cell(Vector2i(cell.x,cell.y-1),-1,Vector2i(0, 0), 0)
+	if(	player.inventory.add_items(name,1)):
+		foreground.set_cell(cell,-1,Vector2i(0, 0), 0)
+		realground.set_cell(cell,-1,Vector2i(0, 0), 0)
+		background.set_cell(cell,0,Vector2i(0, 1), 0)
+		
+		realground.set_cell(Vector2i(cell.x+1,cell.y),-1,Vector2i(0, 0), 0)
+		realground.set_cell(Vector2i(cell.x-1,cell.y),-1,Vector2i(0, 0), 0)
+		realground.set_cell(Vector2i(cell.x,cell.y+1),-1,Vector2i(0, 0), 0)
+		realground.set_cell(Vector2i(cell.x,cell.y-1),-1,Vector2i(0, 0), 0)
 
-	realground.set_cell(Vector2i(cell.x+1,cell.y+1),-1,Vector2i(0, 0), 0)
-	realground.set_cell(Vector2i(cell.x+1,cell.y-1),-1,Vector2i(0, 0), 0)
-	realground.set_cell(Vector2i(cell.x-1,cell.y+1),-1,Vector2i(0, 0), 0)
-	realground.set_cell(Vector2i(cell.x-1,cell.y-1),-1,Vector2i(0, 0), 0)
+		realground.set_cell(Vector2i(cell.x+1,cell.y+1),-1,Vector2i(0, 0), 0)
+		realground.set_cell(Vector2i(cell.x+1,cell.y-1),-1,Vector2i(0, 0), 0)
+		realground.set_cell(Vector2i(cell.x-1,cell.y+1),-1,Vector2i(0, 0), 0)
+		realground.set_cell(Vector2i(cell.x-1,cell.y-1),-1,Vector2i(0, 0), 0)
 
-	miningProgress=0
-	player.inventory.add_items(name,1)
-	supportLevels.set(cell,0)
-	cell_update(cell)
-	global.mining_direction = null
-	
+		miningProgress=0
+		supportLevels.set(cell,0)
+		cell_update(cell)
+		global.mining_direction = null
+		
 
 
 func get_clicked_tile_power():
