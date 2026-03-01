@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dxjqydfrsxa1b"]
 
 [ext_resource type="Script" uid="uid://ve4aqqlfpqjt" path="res://inventory/inventory.gd" id="1_sqil7"]
+[ext_resource type="Script" uid="uid://bt35rak6ag88g" path="res://inventory/grid_container.gd" id="2_f8i2h"]
 [ext_resource type="PackedScene" uid="uid://ti27rqjytu51" path="res://inventory/inventory_tile.tscn" id="2_qse2j"]
 
 [node name="inventory" type="Control" unique_id=186244060]
@@ -30,13 +31,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="GridContainer" type="GridContainer" parent="CenterContainer" unique_id=48559426]
+[node name="Control" type="Control" parent="CenterContainer" unique_id=470635930]
 layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="CenterContainer/Control" unique_id=48559426]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_f8i2h")
 
 [node name="movingTile" parent="." unique_id=2005772785 instance=ExtResource("2_qse2j")]
 visible = false
 layout_mode = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
-[connection signal="gui_input" from="CenterContainer/GridContainer" to="." method="_on_grid_container_gui_input"]
+[connection signal="input" from="CenterContainer/Control/GridContainer" to="." method="_on_grid_container_gui_input"]

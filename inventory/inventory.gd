@@ -7,7 +7,7 @@ extends Control
 @export var LINKED_INV: Inventory
 @onready var SIZE = global.inventory_size
 var inventory_tile = preload("res://inventory/inventory_tile.tscn")
-@onready var grid_container: GridContainer = $CenterContainer/GridContainer
+@onready var grid_container: GridContainer = $CenterContainer/Control/GridContainer
 @onready var moving_tile: InventoryTile = $movingTile
 
 var picked_up_item = null
@@ -70,16 +70,21 @@ func _input(event: InputEvent) -> void:
 
 func _on_grid_container_gui_input(event: InputEvent) -> void:
 	const TILE_WIDTH = 12*4
-	if event is InputEventMouse:
+	
+	if event is InputEventMouse and visible:
 		var x = floor(event.position.x / TILE_WIDTH)
 		var y = floor(event.position.y / TILE_WIDTH)
 		var i = y*WIDTH+x
-		if not grid_container.get_child(i): return
+		print(i)
+		if i >= inventory_data.size() or i < 0: 
+			for c in grid_container.get_children():
+				c.set_hovered(false)
+			return
 		for c in grid_container.get_children():
 			c.set_hovered(false)
 		grid_container.get_child(i).set_hovered(true)
 		
-		if event.button_mask == 2 and event.is_pressed() and inventory_data[i] and not picked_up_item and LINKED_INV:
+		if event.button_mask == 2 and event.is_pressed() and inventory_data[i] and (not picked_up_item) and LINKED_INV:
 			LINKED_INV.add_items(inventory_data[i][0], inventory_data[i][1])
 			inventory_data[i] = null
 			update_inventory_ui()
