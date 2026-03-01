@@ -107,8 +107,8 @@ func _on_grid_container_gui_input(event: InputEvent) -> void:
 		grid_container.get_child(i).set_hovered(true)
 		
 		if event.button_mask == 2 and event.is_pressed() and inventory_data[i] and (not picked_up_item) and LINKED_INV:
-			LINKED_INV.add_items(inventory_data[i][0], inventory_data[i][1])
-			inventory_data[i] = null
+			var response = LINKED_INV.add_items(inventory_data[i][0], inventory_data[i][1])
+			if (response): inventory_data[i] = null
 			update_inventory_ui()
 		elif event.button_mask == 1 and event.is_pressed() and inventory_data[i] and not picked_up_item:
 			picked_up_item = inventory_data[i]
