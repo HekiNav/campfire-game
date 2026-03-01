@@ -6,9 +6,19 @@ THEME: Beneath the Surface
 
 Plans: [Google Docs](https://docs.google.com/document/d/1bgTW2WnLVDNCTp1FFP0hznXEshNKBq89Q6Ze4nac0ZM/edit?usp=sharing)
 
+Made in GODOT
+
 ## PLAY!!
 
 Itch.io [itch.io](https://hekinav.itch.io/back-to-the-surface)
 
 ## Description / story of the game
 A game about digging your way out of a bunker with limited oxygen. You start the game in a bunker with a workbench and a locker. The only way out is digging. You need to make supports for your tunnel as you build your way closer and closer to the surface. You need to return to the surface from time to time to not run out of oxygen and die. You can upgrade your oxygen tank to make longer trips and tunnels. There are ores scattered around the world to make supports, extra inventory space, extra oxygen and dynamite. 
+
+## Roles
+
+HekiNav: Coding
+
+Ropva: Coding
+
+NoseFa: Art/Assets
