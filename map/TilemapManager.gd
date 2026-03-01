@@ -156,7 +156,6 @@ func cell_update(cell: Vector2i, collapse = true):
 		return
 	for k in weaklySupported:
 		var newParticles: GPUParticles2D = WEAK_SUPPORT_PARTICLES.instantiate()
-		
 		newParticles.position = k * 16
 		collapse_effects.add_child(newParticles)
 	for k in notSupported:
@@ -165,9 +164,11 @@ func cell_update(cell: Vector2i, collapse = true):
 		if weaklySupported.has(k+Vector2i.LEFT) && not notSupported.has(k+Vector2i.LEFT) && supportLevels[k+Vector2i.LEFT] < 5: notSupported.push_back(k+Vector2i.LEFT)
 		if weaklySupported.has(k+Vector2i.RIGHT) && not notSupported.has(k+Vector2i.RIGHT) && supportLevels[k+Vector2i.RIGHT] < 5: notSupported.push_back(k+Vector2i.RIGHT)
 		var newEffect: Node2D = COLLAPSE.instantiate()
+		global.camera_shaking=true
 		newEffect.position = (Vector2(k) + Vector2(0.5, -0.5)) * 16
 		var i = 0
 		newEffect.done.connect(func():
+			global.camera_shaking=false
 			foreground.set_cell(k,0,Vector2i(0, 0), 0)
 			supportLevels.erase(k)
 			newEffect.queue_free()

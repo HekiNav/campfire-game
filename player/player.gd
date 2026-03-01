@@ -7,6 +7,8 @@ extends CharacterBody2D
 @export var inventory: Inventory
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var area_2d: Area2D = $Area2D
+var rng = RandomNumberGenerator.new()
+var shake =1;
 
 func colliding():
 	return area_2d.get_overlapping_bodies()
@@ -44,3 +46,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = velocity.x * 0.99
 	move_and_slide()
+
+	if(global.camera_shaking):
+		$Camera2D.position.x=round(rng.randf_range(-shake, shake))
+		$Camera2D.position.y=round(rng.randf_range(-shake, shake))

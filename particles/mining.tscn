@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dls3e5ow126f1"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hvou0"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(4.765, 1, 1)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+angle_min = -720.0
+angle_max = 720.0
+inherit_velocity_ratio = -0.09
+spread = 159.623
+initial_velocity_min = 68.67
+initial_velocity_max = 85.84
+gravity = Vector3(0, 98, 0)
+turbulence_noise_strength = 0.21
+turbulence_noise_scale = 10.0
+turbulence_noise_speed_random = 0.0
+
+[node name="Node2D" type="GPUParticles2D" unique_id=2071587959]
+amount = 50
+amount_ratio = 0.388
+lifetime = 2.79
+speed_scale = 1.6
+collision_base_size = 0.0
+process_material = SubResource("ParticleProcessMaterial_hvou0")

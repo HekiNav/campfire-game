@@ -10,6 +10,8 @@ var mining_direction = null
 var oxygen_upgrades = 0
 var inventory_upgrades = 0
 
+var camera_shaking = false
+
 signal alert
 
 var crafting_recipes = [
