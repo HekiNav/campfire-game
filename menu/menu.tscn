@@ -25,7 +25,6 @@ texture = ExtResource("2_pbjm4")
 stretch_mode = 6
 
 [node name="CenterContainer2" type="CenterContainer" parent="." unique_id=743644247]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
