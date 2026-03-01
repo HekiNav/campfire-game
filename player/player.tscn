@@ -25,7 +25,7 @@ position = Vector2(1, -0.5)
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("2_rkbax")
 animation = &"mine_v"
-frame_progress = 0.7520025
+frame_progress = 0.6607631
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1963883964]
 collision_layer = 16

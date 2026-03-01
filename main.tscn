@@ -145,6 +145,7 @@ scale = Vector2(7.7916675, 7.7916675)
 texture = ExtResource("9_kek77")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MarginContainer" unique_id=414369382]
+z_index = 100
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 8

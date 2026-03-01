@@ -36,7 +36,7 @@ func add_items(item: String, count = 1):
 			return false
 	return true
 
-var inventory_data = [["gold",8], ["iron", 6], ["aluminium",6], ["fossil",3], ["debris",2]]
+var inventory_data = []
 
 
 var SIZE = 0
@@ -54,7 +54,11 @@ func _ready() -> void:
 		new_tile.background = true
 		grid_container.add_child(new_tile)
 	update_inventory_ui()
-	print(inventory_data)
+	if (TYPE == "locker"):
+		add_items("iron",8)
+		add_items("support",2)
+		add_items("aluminium",1)
+		add_items("fossil",1)
 
 func update_inventory_ui():
 	for i in range(inventory_data.size()):

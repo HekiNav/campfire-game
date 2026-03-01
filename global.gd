@@ -1,6 +1,6 @@
 extends Node
 
-var inventory_size = 8
+var inventory_size = 2
 var locker_size = 24
 
 var is_menu_open = false
