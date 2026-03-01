@@ -15,7 +15,7 @@ grow_vertical = 2
 mouse_force_pass_scroll_events = false
 script = ExtResource("1_sqil7")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1464088064]
+[node name="Background" type="ColorRect" parent="." unique_id=1464088064]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,7 +38,7 @@ layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="CenterContainer/Control" unique_id=48559426]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = -1
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -53,3 +53,4 @@ layout_mode = 1
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="input" from="CenterContainer/Control/GridContainer" to="." method="_on_grid_container_gui_input"]
+[connection signal="mouse_exited" from="CenterContainer/Control/GridContainer" to="CenterContainer/Control/GridContainer" method="_on_mouse_exited"]

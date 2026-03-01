@@ -10,6 +10,9 @@ height = 12.0
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_rkbax"]
 light_mode = 1
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_rkbax"]
+radius = 11.0
+
 [node name="Player" type="CharacterBody2D" unique_id=797232758]
 script = ExtResource("1_rkbax")
 
@@ -22,3 +25,10 @@ position = Vector2(1, -0.5)
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("2_rkbax")
 animation = &"mine_v"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1963883964]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=343694355]
+shape = SubResource("CircleShape2D_rkbax")

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://480jdqjbjnin"]
+
+[ext_resource type="Script" uid="uid://cpgnjgjuqg5q8" path="res://inventory/linked_inventories.gd" id="1_yk6vw"]
+[ext_resource type="PackedScene" uid="uid://dxjqydfrsxa1b" path="res://inventory/inventory.tscn" id="2_yk6vw"]
+
+[node name="LinkedInventories" type="Control" unique_id=1160039746]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yk6vw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2093693450]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=249361912]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="Inventory" parent="VBoxContainer" unique_id=186244060 node_paths=PackedStringArray("LINKED_INV") instance=ExtResource("2_yk6vw")]
+visible = true
+layout_mode = 2
+size_flags_vertical = 6
+BACKGROUND = false
+LINKED_INV = NodePath("../Inventory2")
+SIZE = 24
+
+[node name="Inventory2" parent="VBoxContainer" unique_id=1664034673 node_paths=PackedStringArray("LINKED_INV") instance=ExtResource("2_yk6vw")]
+visible = true
+layout_mode = 2
+size_flags_vertical = 6
+BACKGROUND = false
+LINKED_INV = NodePath("../Inventory")

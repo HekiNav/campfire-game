@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://bium0dpn5eesg"]
+
+[ext_resource type="Script" uid="uid://cbi7b78bswf78" path="res://inventory/crafting.gd" id="1_lsm1r"]
+[ext_resource type="PackedScene" uid="uid://dxjqydfrsxa1b" path="res://inventory/inventory.tscn" id="2_mywmh"]
+
+[node name="Crafting" type="Control" unique_id=1160039746]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lsm1r")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2093693450]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=249361912]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer" unique_id=1961884642]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/CenterContainer" unique_id=704793763]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="recipeContainer" type="VBoxContainer" parent="VBoxContainer/CenterContainer/ScrollContainer" unique_id=1939742107]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Inventory" parent="VBoxContainer" unique_id=1664034673 node_paths=PackedStringArray("LINKED_INV") instance=ExtResource("2_mywmh")]
+visible = true
+layout_mode = 2
+size_flags_vertical = 6
+BACKGROUND = false
+LINKED_INV = NodePath("")
