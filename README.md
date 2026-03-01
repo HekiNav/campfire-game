@@ -6,6 +6,8 @@ THEME: Beneath the Surface
 
 Plans: [Google Docs](https://docs.google.com/document/d/1bgTW2WnLVDNCTp1FFP0hznXEshNKBq89Q6Ze4nac0ZM/edit?usp=sharing)
 
+Made in GODOT
+
 ## PLAY!!
 
 Itch.io [itch.io](https://hekinav.itch.io/back-to-the-surface)
